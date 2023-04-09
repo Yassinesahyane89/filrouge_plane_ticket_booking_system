@@ -32,9 +32,9 @@ class FortifyServiceProvider extends ServiceProvider
     Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
     Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-    Fortify::loginView(fn () => view('auth.login-basic', ['pageConfigs' => ['myLayout' => 'blank']]));
+    Fortify::loginView(fn () => view('auth.login', ['pageConfigs' => ['myLayout' => 'blank']]));
 
-    Fortify::registerView(fn () => view('auth.register-basic', ['pageConfigs' => ['myLayout' => 'blank']]));
+    Fortify::registerView(fn () => view('auth.register', ['pageConfigs' => ['myLayout' => 'blank']]));
 
     Fortify::requestPasswordResetLinkView(fn () => view('auth.forgot-password', ['pageConfigs' => ['myLayout' => 'blank']]));
 
