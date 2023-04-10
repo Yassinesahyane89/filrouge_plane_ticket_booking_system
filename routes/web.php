@@ -4,6 +4,7 @@ use App\Http\Controllers\AirportController;
 use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,4 +60,12 @@ Route::prefix('seat')->middleware('auth')->group(function () {
   Route::get('edit/{id}', [SeatController::class, 'edit'])->name('seat.edit');
   Route::get('delete/{id}', [SeatController::class, 'delete'])->name('seat.delete');
   Route::get('chnage/status/{id}', [SeatController::class, 'change_status'])->name('seat.change.status');
+});
+
+Route::prefix('plan')->middleware('auth')->group(function () {
+  Route::get('/', [PlanController::class, 'index'])->name('plan.index');
+  Route::get('create', [PlanController::class, 'create'])->name('plan.create');
+  Route::get('edit/{id}', [PlanController::class, 'edit'])->name('plan.edit');
+  Route::get('delete/{id}', [PlanController::class, 'delete'])->name('plan.delete');
+  Route::get('chnage/status/{id}', [PlanController::class, 'change_status'])->name('plan.change.status');
 });
