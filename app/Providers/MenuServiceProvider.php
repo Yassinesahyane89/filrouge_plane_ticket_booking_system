@@ -31,6 +31,14 @@ class MenuServiceProvider extends ServiceProvider
       ->addSubmenu('Users', function ($menu) {
         $menu->add('List Users', 'user.index');
         $menu->add('Add User', 'user.create');
-      }, 'tf-icons ti ti-users');
+      }, 'tf-icons ti ti-users')
+      ->addSubmenu('Countries', function ($menu) {
+        $menu->add('List Countries', 'country.index');
+        $menu->add('Add Country', 'country.create');
+      }, '')
+    ->addSubmenu('Cities', function ($menu) {
+      $menu->add('List Cities', 'city.index');
+      $menu->add('Add Cities', 'city.create');
+    }, '');
   }
 }
