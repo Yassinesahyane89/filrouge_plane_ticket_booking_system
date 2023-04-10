@@ -43,6 +43,10 @@ class MenuServiceProvider extends ServiceProvider
     ->addSubmenu('Airports', function ($menu) {
       $menu->add('List Airports', 'airport.index');
       $menu->add('Add Airports', 'airport.create');
-    }, '');
+    }, '')
+      ->addSubmenu('Cabins', function ($menu) {
+        $menu->add('List Cabins', 'cabin.index');
+        $menu->add('Add Cabins', 'cabin.create');
+      }, '');
   }
 }
