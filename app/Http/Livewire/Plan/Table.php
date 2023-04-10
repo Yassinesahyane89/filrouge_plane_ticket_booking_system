@@ -22,7 +22,7 @@ class Table extends Component
   public $perPage = 10; // defult per page 10
   public $status = null; // null value means all
   public $currentPage = 1; // defult current page
-  public $sortBy = 'name'; // defult sort by name
+  public $sortBy = 'number'; // defult sort by number
   public $sortDirection = 'asc'; // defult sort direction
 
 
@@ -53,7 +53,7 @@ class Table extends Component
   public function loadData()
   {
     $this->plans = Plan::when(!empty($this->search), function ($query) {
-      $query->where('name', 'like', '%' . $this->search . '%');
+      $query->where('number', 'like', '%' . $this->search . '%');
       // ->orWhere('email', 'like', '%' . $this->search . '%');
     })
       ->orderBy($this->sortBy, $this->sortDirection)

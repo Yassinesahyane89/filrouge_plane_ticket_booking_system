@@ -31,8 +31,8 @@
                     aria-describedby="DataTables_Table_0_info">
                     <thead>
                         <tr>
-                            <th class="sorting {{ $sortBy == "name" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('name')" aria-controls="DataTables_Table_0">
-                                Full name
+                            <th class="sorting {{ $sortBy == "number" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('number')" aria-controls="DataTables_Table_0">
+                                Plan number
                             </th>
                             <th aria-controls="DataTables_Table_0">
                                 Action
@@ -42,7 +42,7 @@
                     <tbody>
                         @forelse ($plans['data'] as $plan)
                             <tr>
-                                <td><strong>{{ $plan['name'] }}</strong></td>
+                                <td><strong>{{ $plan['number'] }}</strong></td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
