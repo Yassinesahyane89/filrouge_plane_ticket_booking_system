@@ -24,6 +24,13 @@ class MenuServiceProvider extends ServiceProvider
    */
   public function boot()
   {
-    Menu::add('Home', 'home', 'tf-icons ti ti-smart-home');
+      Menu::add('Home', 'home', 'tf-icons ti ti-smart-home')
+      ->addSubmenu('Role', function ($menu) {
+        $menu->add('List', 'role.index');
+      }, 'fa-solid fa-person-circle-question')
+      ->addSubmenu('Users', function ($menu) {
+        $menu->add('List Users', 'user.index');
+        $menu->add('Add User', 'user.create');
+      }, 'tf-icons ti ti-users');
   }
 }

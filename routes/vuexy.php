@@ -29,6 +29,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
   Route::get('/', [UserController::class, 'index'])->name('user.index');
   Route::get('create', [UserController::class, 'create'])->name('user.create');
   Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+  Route::get('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
   Route::get('chnage/status/{id}', [UserController::class, 'change_status'])->name('user.change.status');
 });
 
