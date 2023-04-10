@@ -22,7 +22,7 @@ class Table extends Component
   public $perPage = 10; // defult per page 10
   public $status = null; // null value means all
   public $currentPage = 1; // defult current page
-  public $sortBy = 'name'; // defult sort by name
+  public $sortBy = 'departureDate'; // defult sort by name
   public $sortDirection = 'asc'; // defult sort direction
 
 
@@ -53,12 +53,15 @@ class Table extends Component
   public function loadData()
   {
     $this->flights = Flight::when(!empty($this->search), function ($query) {
-      $query->where('name', 'like', '%' . $this->search . '%');
+      $query->where('departureDate', 'like', '%' . $this->search . '%');
       // ->orWhere('email', 'like', '%' . $this->search . '%');
     })
       ->orderBy($this->sortBy, $this->sortDirection)
+      ->with('fromAirport', 'toAirport', 'plan')
       ->paginate($this->perPage, ['*'], 'page', $this->currentPage)
       ->toArray();
+
+      info('flights', $this->flights);
   }
 
   public function render()

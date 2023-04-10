@@ -15,13 +15,13 @@
     </div>
     <div class="form-group col-4">
         <label for="" class="form-label">Airport Arrival</label>
-        <select wire:model="flight.from_airport_id" class="form-select">
+        <select wire:model="flight.to_airport_id" class="form-select">
             <option value="">baliz select </option>
             @foreach ($airports as $airport)
               <option value="{{$airport->id}}">{{ $airport->name }}</option>
             @endforeach
         </select>
-        @error('flight.from_airport_id')
+        @error('flight.to_airport_id')
           <div class="invalid-feedback" style="display: block">
             <span>{{ $message }}</span>
           </div>
@@ -32,7 +32,7 @@
         <select wire:model="flight.plan_id" class="form-select">
             <option value="">baliz select </option>
             @foreach ($plans as $plan)
-              <option value="{{$plan->id}}">{{ $plan->name }}</option>
+              <option value="{{$plan->id}}">{{ $plan->number }}</option>
             @endforeach
         </select>
         @error('flight.plan_id')

@@ -18,4 +18,9 @@ class Plan extends Model
   {
     return $this->hasMany(Seat::class);
   }
+
+  public function flight()
+  {
+    return $this->hasMany(Flight::class);
+  }
 }

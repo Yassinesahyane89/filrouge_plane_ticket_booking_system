@@ -15,7 +15,7 @@ class Flight extends Model
     'to_airport_id',
     'departure_time',
     'arrival_time',
-    'price'
+    'plan_id'
   ];
 
   public function fromAirport()
@@ -30,6 +30,6 @@ class Flight extends Model
 
   public function plan()
   {
-    return $this->hasOne(Plan::class);
+    return $this->belongsTo(Plan::class);
   }
 }

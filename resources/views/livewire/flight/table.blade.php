@@ -31,8 +31,20 @@
                     aria-describedby="DataTables_Table_0_info">
                     <thead>
                         <tr>
-                            <th class="sorting {{ $sortBy == "name" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('name')" aria-controls="DataTables_Table_0">
-                                Full name
+                            <th class="sorting {{ $sortBy == "departureDate" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('departureDate')" aria-controls="DataTables_Table_0">
+                                departureDate
+                            </th>
+                            <th class="sorting {{ $sortBy == "arrivalDate" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('arrivalDate')" aria-controls="DataTables_Table_0">
+                                arrivalDate
+                            </th>
+                            <th class="sorting {{ $sortBy == "from_airport_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('from_airport_id')" aria-controls="DataTables_Table_0">
+                                from_airport_id
+                            </th>
+                            <th class="sorting {{ $sortBy == "to_airport_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('to_airport_id')" aria-controls="DataTables_Table_0">
+                                to_airport_id
+                            </th>
+                            <th class="sorting {{ $sortBy == "plan_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('plan_id')" aria-controls="DataTables_Table_0">
+                                airline_id
                             </th>
                             <th aria-controls="DataTables_Table_0">
                                 Action
@@ -42,7 +54,11 @@
                     <tbody>
                         @forelse ($flights['data'] as $flight)
                             <tr>
-                                <td><strong>{{ $flight['name'] }}</strong></td>
+                                <td><strong>{{ $flight['departureDate'] }}</strong></td>
+                                <td><strong>{{ $flight['arrivalDate'] }}</strong></td>
+                                <td><strong>{{ $flight['from_airport']['name'] }}</strong></td>
+                                <td><strong>{{ $flight['to_airport_id'] }}</strong></td>
+                                <td><strong>{{ $flight['plan']['number'] }}</strong></td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
