@@ -1,4 +1,6 @@
 <?php return array (
+  'airport.form' => 'App\\Http\\Livewire\\Airport\\Form',
+  'airport.table' => 'App\\Http\\Livewire\\Airport\\Table',
   'city.form' => 'App\\Http\\Livewire\\City\\Form',
   'city.table' => 'App\\Http\\Livewire\\City\\Table',
   'country.form' => 'App\\Http\\Livewire\\Country\\Form',

@@ -39,6 +39,10 @@ class MenuServiceProvider extends ServiceProvider
     ->addSubmenu('Cities', function ($menu) {
       $menu->add('List Cities', 'city.index');
       $menu->add('Add Cities', 'city.create');
+    }, '')
+    ->addSubmenu('Airports', function ($menu) {
+      $menu->add('List Airports', 'airport.index');
+      $menu->add('Add Airports', 'airport.create');
     }, '');
   }
 }
