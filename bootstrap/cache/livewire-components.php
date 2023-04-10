@@ -9,6 +9,8 @@
   'country.table' => 'App\\Http\\Livewire\\Country\\Table',
   'flight.form' => 'App\\Http\\Livewire\\Flight\\Form',
   'flight.table' => 'App\\Http\\Livewire\\Flight\\Table',
+  'passenger.form' => 'App\\Http\\Livewire\\Passenger\\Form',
+  'passenger.table' => 'App\\Http\\Livewire\\Passenger\\Table',
   'plan.form' => 'App\\Http\\Livewire\\Plan\\Form',
   'plan.table' => 'App\\Http\\Livewire\\Plan\\Table',
   'seat.form' => 'App\\Http\\Livewire\\Seat\\Form',

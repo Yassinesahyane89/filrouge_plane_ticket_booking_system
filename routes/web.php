@@ -5,6 +5,7 @@ use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
@@ -77,4 +78,12 @@ Route::prefix('flight')->middleware('auth')->group(function () {
   Route::get('edit/{id}', [FlightController::class, 'edit'])->name('flight.edit');
   Route::get('delete/{id}', [FlightController::class, 'delete'])->name('flight.delete');
   Route::get('chnage/status/{id}', [FlightController::class, 'change_status'])->name('flight.change.status');
+});
+
+Route::prefix('passenger')->middleware('auth')->group(function () {
+  Route::get('/', [PassengerController::class, 'index'])->name('passenger.index');
+  Route::get('create', [PassengerController::class, 'create'])->name('passenger.create');
+  Route::get('edit/{id}', [PassengerController::class, 'edit'])->name('passenger.edit');
+  Route::get('delete/{id}', [PassengerController::class, 'delete'])->name('passenger.delete');
+  Route::get('chnage/status/{id}', [PassengerController::class, 'change_status'])->name('passenger.change.status');
 });
