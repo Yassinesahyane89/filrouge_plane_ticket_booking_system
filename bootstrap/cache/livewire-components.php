@@ -7,6 +7,8 @@
   'city.table' => 'App\\Http\\Livewire\\City\\Table',
   'country.form' => 'App\\Http\\Livewire\\Country\\Form',
   'country.table' => 'App\\Http\\Livewire\\Country\\Table',
+  'flight.form' => 'App\\Http\\Livewire\\Flight\\Form',
+  'flight.table' => 'App\\Http\\Livewire\\Flight\\Table',
   'plan.form' => 'App\\Http\\Livewire\\Plan\\Form',
   'plan.table' => 'App\\Http\\Livewire\\Plan\\Table',
   'seat.form' => 'App\\Http\\Livewire\\Seat\\Form',

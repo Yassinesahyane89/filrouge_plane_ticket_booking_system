@@ -55,6 +55,10 @@ class MenuServiceProvider extends ServiceProvider
       ->addSubmenu('Plans', function ($menu) {
         $menu->add('List Plans', 'plan.index');
         $menu->add('Add Plans', 'plan.create');
+      }, '')
+      ->addSubmenu('Flights', function ($menu) {
+        $menu->add('List Flights', 'flight.index');
+        $menu->add('Add Flights', 'flight.create');
       }, '');
   }
 }
