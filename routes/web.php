@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
@@ -41,4 +42,12 @@ Route::prefix('airport')->middleware('auth')->group(function () {
   Route::get('edit/{id}', [AirportController::class, 'edit'])->name('airport.edit');
   Route::get('delete/{id}', [AirportController::class, 'delete'])->name('airport.delete');
   Route::get('chnage/status/{id}', [AirportController::class, 'change_status'])->name('airport.change.status');
+});
+
+Route::prefix('cabin')->middleware('auth')->group(function () {
+  Route::get('/', [CabinController::class, 'index'])->name('cabin.index');
+  Route::get('create', [CabinController::class, 'create'])->name('cabin.create');
+  Route::get('edit/{id}', [CabinController::class, 'edit'])->name('cabin.edit');
+  Route::get('delete/{id}', [CabinController::class, 'delete'])->name('cabin.delete');
+  Route::get('chnage/status/{id}', [CabinController::class, 'change_status'])->name('cabin.change.status');
 });
