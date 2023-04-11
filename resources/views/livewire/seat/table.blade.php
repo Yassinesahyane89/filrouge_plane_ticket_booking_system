@@ -54,7 +54,7 @@
                                 <td><strong>{{ $seat['quantity'] }}</strong></td>
                                 <td>{{ $seat['price'] }}</td>
                                 <td>{{ $seat['cabin']['name'] }}</td>
-                                <td>{{ $seat['plan']['name'] }}</td>
+                                <td>{{ $seat['plan']['number'] }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

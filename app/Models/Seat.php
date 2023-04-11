@@ -21,7 +21,7 @@ class Seat extends Model
   {
     return $this->belongsTo(Cabin::class);
   }
-
+ 
   public function plan()
   {
     return $this->belongsTo(Plan::class);
