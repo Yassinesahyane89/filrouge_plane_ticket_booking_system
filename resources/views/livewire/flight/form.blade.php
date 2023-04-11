@@ -2,7 +2,7 @@
     <div class="form-group col-4">
         <label for="" class="form-label">Airport Departe</label>
         <select wire:model="flight.from_airport_id" class="form-select">
-            <option value="">baliz select </option>
+            <option value="">Please select</option>
             @foreach ($airports as $airport)
               <option value="{{$airport->id}}">{{ $airport->name }}</option>
             @endforeach
@@ -16,10 +16,10 @@
     <div class="form-group col-4">
         <label for="" class="form-label">Airport Arrival</label>
         <select wire:model="flight.to_airport_id" class="form-select">
-            <option value="">baliz select </option>
-            @foreach ($airports as $airport)
-              <option value="{{$airport->id}}">{{ $airport->name }}</option>
-            @endforeach
+            <option value="">Please select</option>
+             @if ($airport->id != $flight->from_airport_id)
+                <option value="{{$airport->id}}">{{ $airport->name }}</option>
+            @endif
         </select>
         @error('flight.to_airport_id')
           <div class="invalid-feedback" style="display: block">

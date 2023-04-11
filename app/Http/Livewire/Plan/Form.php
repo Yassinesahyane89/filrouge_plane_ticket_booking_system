@@ -12,6 +12,7 @@ class Form extends Component
   public Plan $plan;
   public $seats = [];
   public $cabins = [];
+  public $selectedCabins = [];
 
   protected function rules()
   {
@@ -71,9 +72,24 @@ class Form extends Component
       ]);
     }
 
+    array_push($this->selectedCabins, $seat['cabin_id']);
+
     $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => 'success', 'message' => 'plan updated successfully!']);
 
     return redirect('plan');
+  }
+
+  public function getCabinsByIndex($index)
+  {
+    $selectedCabins = [];
+
+    for ($i = 0; $i < count($this->seats); $i++) {
+      if ($i != $index && isset($this->seats[$i]['cabin_id'])) {
+        $selectedCabins[] = $this->seats[$i]['cabin_id'];
+      }
+    }
+
+    return Cabin::whereNotIn('id', $selectedCabins)->get();
   }
 
   public function render()

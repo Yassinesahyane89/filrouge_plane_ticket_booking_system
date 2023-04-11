@@ -106,7 +106,6 @@
                                         </button>
                                     </li>
                                 @endfor
-
                                 <li class="paginate_button page-item next @disabled($flights['last_page'] == $currentPage)" id="DataTables_Table_0_next">
                                     <button wire:click="changePage({{ $flights['current_page'] + 1 }})" @disabled($flights['last_page'] == $currentPage) aria-controls="DataTables_Table_0" aria-role="link" data-dt-idx="next" class="page-link">
                                         Next
@@ -117,8 +116,6 @@
                     </div>
                 </div>
             @endif
-
         </div>
     </div>
-
 </div>

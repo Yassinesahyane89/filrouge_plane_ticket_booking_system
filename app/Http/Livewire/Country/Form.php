@@ -16,7 +16,7 @@ class Form extends Component
       'country.name' => 'required|min:6',
     ];
   }
-
+ 
 
   public function mount($country)
   {
