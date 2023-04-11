@@ -57,7 +57,7 @@
                                 <td><strong>{{ $flight['departureDate'] }}</strong></td>
                                 <td><strong>{{ $flight['arrivalDate'] }}</strong></td>
                                 <td><strong>{{ $flight['from_airport']['name'] }}</strong></td>
-                                <td><strong>{{ $flight['to_airport_id'] }}</strong></td>
+                                <td><strong>{{ $flight['to_airport']['name'] }}</strong></td>
                                 <td><strong>{{ $flight['plan']['number'] }}</strong></td>
                                 <td>
                                     <div class="dropdown">
