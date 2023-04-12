@@ -38,13 +38,13 @@
                                 arrivalDate
                             </th>
                             <th class="sorting {{ $sortBy == "from_airport_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('from_airport_id')" aria-controls="DataTables_Table_0">
-                                from_airport_id
+                                Airport departure
                             </th>
                             <th class="sorting {{ $sortBy == "to_airport_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('to_airport_id')" aria-controls="DataTables_Table_0">
-                                to_airport_id
+                                Airport arrival
                             </th>
                             <th class="sorting {{ $sortBy == "plan_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('plan_id')" aria-controls="DataTables_Table_0">
-                                airline_id
+                                plan
                             </th>
                             <th aria-controls="DataTables_Table_0">
                                 Action
