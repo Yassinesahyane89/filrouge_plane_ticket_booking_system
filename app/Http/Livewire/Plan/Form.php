@@ -88,7 +88,6 @@ class Form extends Component
         $selectedCabins[] = $this->seats[$i]['cabin_id'];
       }
     }
-
     return Cabin::whereNotIn('id', $selectedCabins)->get();
   }
 

@@ -17,8 +17,8 @@ class Form extends Component
   protected function rules()
   {
     return [
-      'flight.departureDate' => 'required',
-      'flight.arrivalDate' => 'required',
+      'flight.departureDate' => 'required|after_or_equal:today',
+      'flight.arrivalDate' => 'required|after:flight.departureDate',
       'flight.from_airport_id' => 'required',
       'flight.to_airport_id' => 'required',
       'flight.plan_id' => 'required',
@@ -33,6 +33,13 @@ class Form extends Component
     $this->plans = Plan::all();
   }
 
+  protected function validateFlightDates()
+  {
+    if ($this->flight->arrivalDate < $this->flight->departureDate) {
+      $this->addError('flight.arrivalDate', 'The arrival date must be later than the departure date.');
+    }
+  }
+
   public function updated($propertyName)
   {
     $this->validateOnly($propertyName);
@@ -41,6 +48,7 @@ class Form extends Component
   public function update()
   {
     $this->validate();
+    $this->validateFlightDates();
 
     $this->flight->save();
 

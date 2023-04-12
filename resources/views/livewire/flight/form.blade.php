@@ -41,8 +41,14 @@
           </div>
         @enderror
     </div>
-    <x-form.input name="flight.departureDate" label="departure Date:" type="datetime-local" patternClass="col-4" wire:model="flight.departureDate" />
-    <x-form.input name="flight.arrivalDate" label="Arrival Date:" type="datetime-local" patternClass="col-4" wire:model="flight.arrivalDate" />
+    <x-form.input name="flight.departureDate" label="departure Date:" type="datetime-local" patternClass="col-4" wire:model="flight.departureDate" :min="now()->format('Y-m-d\TH:i')"/>
+    @if ($errors->has('departureDate'))
+        <span class="error">{{ $errors->first('departureDate') }}</span>
+    @endif
+    <x-form.input name="flight.arrivalDate" label="Arrival Date:" type="datetime-local" patternClass="col-4" wire:model="flight.arrivalDate" :min="now()->format('Y-m-d\TH:i')" />
+    @if ($errors->has('arrivalDate'))
+        <span class="error">{{ $errors->first('arrivalDate') }}</span>
+    @endif
     <div class="mt-3">
         <button class="btn btn-primary" wire:click="update" wire:loading.attr="disabled">Save</button>
     </div>
