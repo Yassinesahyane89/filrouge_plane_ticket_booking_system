@@ -28,6 +28,9 @@ Route::redirect('/', '/login', 301)->name('index');
 Route::get('/landing', function () {
   return view('content.mywebsite.landing-page');
 })->name('landing');
+Route::get('/contact', function () {
+  return view('content.mywebsite.contact');
+})->name('contact');
 
 Route::prefix('country')->middleware('auth')->group(function () {
   Route::get('/', [CountryController::class, 'index'])->name('country.index');
