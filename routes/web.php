@@ -24,6 +24,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login', 301)->name('index');
 
+// ROUT FOR VIEW landing page
+Route::get('/landing', function () {
+  return view('content.mywebsite.landing-page');
+})->name('landing');
+
 Route::prefix('country')->middleware('auth')->group(function () {
   Route::get('/', [CountryController::class, 'index'])->name('country.index');
   Route::get('create', [CountryController::class, 'create'])->name('country.create');

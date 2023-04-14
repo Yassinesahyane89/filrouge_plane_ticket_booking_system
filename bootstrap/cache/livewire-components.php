@@ -15,6 +15,8 @@
   'plan.table' => 'App\\Http\\Livewire\\Plan\\Table',
   'seat.form' => 'App\\Http\\Livewire\\Seat\\Form',
   'seat.table' => 'App\\Http\\Livewire\\Seat\\Table',
+  'test.form' => 'App\\Http\\Livewire\\Test\\Form',
+  'test.table' => 'App\\Http\\Livewire\\Test\\Table',
   'ticket.form' => 'App\\Http\\Livewire\\Ticket\\Form',
   'ticket.table' => 'App\\Http\\Livewire\\Ticket\\Table',
   'user.form' => 'App\\Http\\Livewire\\User\\Form',
