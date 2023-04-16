@@ -12,7 +12,7 @@ To run this application, you need to have the following software installed on yo
 
 Then, follow these steps:
 
-** Clone this repository:** 
+** Clone this repository:
 
     git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git
  
