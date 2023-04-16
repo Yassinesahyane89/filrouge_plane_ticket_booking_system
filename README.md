@@ -62,5 +62,4 @@ If you'd like to contribute to this project, please follow these steps:
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-In this updated README file, we've included two new steps: step 6 to install the PHP dependencies with Composer, and step 7 to run the database migrations with `php artisan migrate`. The rest of the steps remain the same.
 
