@@ -59,6 +59,22 @@ If you'd like to contribute to this project, please follow these steps:
 4. Push to the branch: git push origin my-new-feature
 5. Create a new Pull Request.
 
+### User Stories
+
+#### User
+- **Search for Available Flights:** To search for available flights, navigate to the "Search Flights" page and enter your departure and arrival airports, as well as the date for departure.
+- **Select a Flight:** To select a flight, view the search results and choose a flight that meets your criteria.
+
+#### Administrator
+- **Add, Edit, or Delete Countries:** To add, edit, or delete countries, navigate to the "Countries" page and use the provided forms and controls.
+- **Add, Edit, or Delete Cities:** To add, edit, or delete cities, navigate to the "Cities" page and use the provided forms and controls.
+- **Add, Edit, or Delete Airports:** To add, edit, or delete airports, navigate to the "Airports" page and use the provided forms and controls.
+- **Add, Edit, or Delete Planes:** To add, edit, or delete planes, navigate to the "Planes" page and use the provided forms and controls.
+- **Add, Edit, or Delete Classes:** To add, edit, or delete classes, navigate to the "Classes" page and use the provided forms and controls.
+- **Add, Edit, or Delete Flights:** To add, edit, or delete flights, navigate to the "Flights" page and use the provided forms and controls.
+- **Edit or Delete Passengers:** To edit or delete passengers, navigate to the "Passengers" page and use the provided controls.
+- **Edit and Delete User Roles and Permissions:** To edit or delete user roles and permissions, navigate to the "User Roles" page and use the provided controls.
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
