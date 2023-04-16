@@ -10,7 +10,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="background-content text-center">
-                                <h2 class="title">Booking List</h2>
+                                <h2 class="title">Search Flight</h2>
                                 <nav>
                                     <ol class="d-flex justify-content-center mb-0">
                                         <li class="background-item"><a href="index-2.html">Home</a></li>
@@ -184,7 +184,7 @@
                     <div class="row align-items-end mb-50">
                         <div class="col-md-8">
                             <div class="section-title">
-                                <span class="sub-title">Why Air geair</span>
+                                <span class="sub-title">Why Air Sahyane</span>
                                 <h2 class="title">Our Great Flight Options</h2>
                             </div>
                         </div>
