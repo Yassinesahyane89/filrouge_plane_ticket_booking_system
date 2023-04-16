@@ -31,6 +31,7 @@ php artisan migrate
 npm install
 npm start
 php artisan serv
+```
 
 ##Usage
 
