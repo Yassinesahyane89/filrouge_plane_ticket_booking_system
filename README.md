@@ -16,25 +16,35 @@ Then, follow these steps:
 
     git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git
  
-3. Navigate to the project directory: `cd filrouge_plane_ticket_booking_system`
-4. Start the Apache and MySQL modules in XAMPP
-5. Create a new .env file by copying the .env.example file and updating the database credentials and other environment variables as needed.
-6. Install the PHP dependencies: `composer install`
-7. Run the database migrations: `php artisan migrate`
-8. Install the Node.js dependencies: `npm install`
-9. Start the server: `npm start`
-10. Start the local server by running php artisan serve.
-```bash
-git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git
-cd filrouge_plane_ticket_booking_system
-cp .env.example .env
-php artisan key:generate
-composer i
-php artisan migrate
-npm install
-npm start
-php artisan serv
-```
+2.Navigate to the project directory:
+
+    cd filrouge_plane_ticket_booking_system
+    
+3.Start the Apache and MySQL modules in XAMPP
+4.Create a new .env file by copying the .env.example file and updating the database credentials and other environment variables as needed.
+
+    cp .env.example .env
+
+5.Generate a new application key
+
+    php artisan key:generate
+
+6.Install the PHP dependencies:
+
+    composer install
+
+7.Run the database migrations:
+
+    php artisan migrate
+    
+8.Install the Node.js dependencies:
+
+    npm install
+
+9.Start the local server by running php artisan serve.
+
+    php artisan serv
+
 
 ## Usage
 
