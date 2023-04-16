@@ -2,27 +2,6 @@
 @extends('content.mywebsite.layouts.footer')
 @extends('content.mywebsite.layouts.header')
 @section('content')
-       <!-- main-area -->
-        <main>
-            <!-- background-area -->
-             <section class="background-bg">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="background-content text-center">
-                                <h2 class="title">Search Flight</h2>
-                                <nav>
-                                    <ol class="d-flex justify-content-center mb-0">
-                                        <li class="background-item"><a href="index-2.html">Home</a></li>
-                                        <li class="background-item active">Booking List</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- background-area-end -->
             <!-- booking-area -->
             <div class="booking-area position-relative">
                 <div class="container">
@@ -251,6 +230,4 @@
                 </div>
             </section>
             <!-- service-area-end -->
-        </main>
-        <!-- main-area-end -->
 @endsection

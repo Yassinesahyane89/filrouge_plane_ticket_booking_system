@@ -33,6 +33,24 @@
             </div>
         </header>
         <!-- header-area-end -->
-<main>
-    @yield('content')
-</main>
+        <main>
+          <section class="background-bg">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8">
+                          <div class="background-content text-center">
+                              <h2 class="title">Booking List</h2>
+                              <nav>
+                                  <ol class="d-flex justify-content-center mb-0">
+                                      <li class="background-item"><a href="index-2.html">Home</a></li>
+                                      <li class="background-item active">Booking List</li>
+                                  </ol>
+                              </nav>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+            @yield('content')
+        </main>
