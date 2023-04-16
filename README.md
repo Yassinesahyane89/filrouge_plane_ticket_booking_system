@@ -2,6 +2,20 @@
 
 This is a web application for booking plane tickets. Users can browse available flights, select their preferred departure and destination airports, choose a date and time, and purchase tickets.
 
+**TL;DR command list**
+
+    git clone git@github.com:Idoufkir/Projet-Fil-Rouge.git
+    cd Projet-Fil-Rouge
+    cd PFR
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+
+    php artisan migrate
+    php artisan serve
+
 ## Installation
 
 To run this application, you need to have the following software installed on your machine:
