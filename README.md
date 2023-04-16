@@ -1,6 +1,12 @@
 # Plane Ticket Booking System
 
-This is a web application for booking plane tickets. Users can browse available flights, select their preferred departure and destination airports, choose a date and time, and purchase tickets.
+The Plane Ticket Booking System is a web application that allows users to browse and book flights. Users can search for available flights by specifying the departure and destination airports, as well as the date of departure. Once the user has selected a flight, they can purchase tickets for the desired class and number of passengers.
+
+As an administrator, the user can manage the database of countries, cities, airports, planes, classes, and flights. The administrator can add, edit, or delete any of these entities, as well as passengers and user roles.
+
+The application is built using  the Laravel framework, with a MySQL database for storing data. It also uses HTML, CSS, JavaScript and bootstrap for the front-end.
+
+Overall, the Plane Ticket Booking System provides a simple and convenient way for users to search for and book flights, while also offering administrators the tools to manage the system efficiently.
 
 ## Installation
 
@@ -59,21 +65,18 @@ If you'd like to contribute to this project, please follow these steps:
 4. Push to the branch: git push origin my-new-feature
 5. Create a new Pull Request.
 
-### User Stories
-
-#### User
-- **Search for Available Flights:** To search for available flights, navigate to the "Search Flights" page and enter your departure and arrival airports, as well as the date for departure.
-- **Select a Flight:** To select a flight, view the search results and choose a flight that meets your criteria.
-
-#### Administrator
-- **Add, Edit, or Delete Countries:** To add, edit, or delete countries, navigate to the "Countries" page and use the provided forms and controls.
-- **Add, Edit, or Delete Cities:** To add, edit, or delete cities, navigate to the "Cities" page and use the provided forms and controls.
-- **Add, Edit, or Delete Airports:** To add, edit, or delete airports, navigate to the "Airports" page and use the provided forms and controls.
-- **Add, Edit, or Delete Planes:** To add, edit, or delete planes, navigate to the "Planes" page and use the provided forms and controls.
-- **Add, Edit, or Delete Classes:** To add, edit, or delete classes, navigate to the "Classes" page and use the provided forms and controls.
-- **Add, Edit, or Delete Flights:** To add, edit, or delete flights, navigate to the "Flights" page and use the provided forms and controls.
-- **Edit or Delete Passengers:** To edit or delete passengers, navigate to the "Passengers" page and use the provided controls.
-- **Edit and Delete User Roles and Permissions:** To edit or delete user roles and permissions, navigate to the "User Roles" page and use the provided controls.
+## Features
+  The Plane Ticket Booking System has the following features:
+    - As a user, I can search for available flights with airport depart and arrival with a date for depart.
+    - As a user, I can select a flight.
+    - As an administrator, I can add, edit, or delete all countries.
+    - As an administrator, I can add, edit, or delete all cities.
+    - As an administrator, I can add, edit, or delete all airports.
+    - As an administrator, I can add, edit, or delete all planes.
+    - As an administrator, I can add, edit, or delete all classes.
+    - As an administrator, I can add, edit, or delete all flights.
+    - As an administrator, I can edit or delete all passengers.
+    - As an administrator, I can edit and delete user roles, and assign access permissions to each role.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
