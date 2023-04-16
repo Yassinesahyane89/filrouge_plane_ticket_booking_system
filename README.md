@@ -13,7 +13,9 @@ To run this application, you need to have the following software installed on yo
 Then, follow these steps:
 
 1. Clone this repository: `git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git`
-   ```git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git```
+   ```bash
+    git clone https://github.com/Yassinesahyane89/filrouge_plane_ticket_booking_system.git
+   ```
 3. Navigate to the project directory: `cd filrouge_plane_ticket_booking_system`
 4. Start the Apache and MySQL modules in XAMPP
 5. Create a new .env file by copying the .env.example file and updating the database credentials and other environment variables as needed.
