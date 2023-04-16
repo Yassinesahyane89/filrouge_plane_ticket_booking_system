@@ -66,17 +66,20 @@ If you'd like to contribute to this project, please follow these steps:
 5. Create a new Pull Request.
 
 ## Features
-  The Plane Ticket Booking System has the following features:
-    - As a user, I can search for available flights with airport depart and arrival with a date for depart.
-    - As a user, I can select a flight.
-    - As an administrator, I can add, edit, or delete all countries.
-    - As an administrator, I can add, edit, or delete all cities.
-    - As an administrator, I can add, edit, or delete all airports.
-    - As an administrator, I can add, edit, or delete all planes.
-    - As an administrator, I can add, edit, or delete all classes.
-    - As an administrator, I can add, edit, or delete all flights.
-    - As an administrator, I can edit or delete all passengers.
-    - As an administrator, I can edit and delete user roles, and assign access permissions to each role.
+
+The Plane Ticket Booking System has the following features:
+
+- As a user, I can search for available flights with airport depart and arrival with a date for depart.
+- As a user, I can select a flight.
+- As an administrator, I can add, edit, or delete all countries.
+- As an administrator, I can add, edit, or delete all cities.
+- As an administrator, I can add, edit, or delete all airports.
+- As an administrator, I can add, edit, or delete all planes.
+- As an administrator, I can add, edit, or delete all classes.
+- As an administrator, I can add, edit, or delete all flights.
+- As an administrator, I can edit or delete all passengers.
+- As an administrator, I can edit and delete user roles, and assign access permissions to each role.
+
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
