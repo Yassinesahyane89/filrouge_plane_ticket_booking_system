@@ -33,7 +33,7 @@ npm start
 php artisan serv
 ```
 
-##Usage
+## Usage
 
 Once the server is running and you've opened the application in your web browser, you can use it to browse available flights, select your departure and destination airports, choose a date and time, and purchase tickets.
 
@@ -46,7 +46,7 @@ If you'd like to contribute to this project, please follow these steps:
 4. Push to the branch: git push origin my-new-feature
 5. Create a new Pull Request.
 
-##License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 In this updated README file, we've included two new steps: step 6 to install the PHP dependencies with Composer, and step 7 to run the database migrations with `php artisan migrate`. The rest of the steps remain the same.
