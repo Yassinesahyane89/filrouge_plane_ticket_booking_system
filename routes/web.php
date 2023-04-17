@@ -5,12 +5,14 @@ use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +31,6 @@ Route::redirect('/', '/login', 301)->name('index');
 Route::get('/landing', function () {
   return view('content.mywebsite.landing-page');
 })->name('landing');
-// Route::get('/contact', function () {
-//   return view('content.mywebsite.contact');
-// })->name('contact');
 Route::get('/bookingdetails', function () {
   return view('content.mywebsite.booking-details');
 })->name('bookingdetails');
@@ -115,4 +114,13 @@ Route::prefix('ticket')->middleware('auth')->group(function () {
 Route::prefix('contact')->group(function () {
   Route::get('/', [ContactController::class, 'index'])->name('contact.index');
   Route::post('store', [ContactController::class, 'store'])->name('contact.store');
+});
+
+Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], function () {
+  Route::get('', 'index')->name('contact.index');
+  Route::post('store', 'store')->name('contact.store');
+});
+
+Route::group(['controller' => DashboardContactController::class, 'prefix' => 'dashboard/contact'], function () {
+  Route::get('', 'index')->name('dashboard.contact.index');
 });

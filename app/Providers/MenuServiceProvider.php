@@ -67,6 +67,9 @@ class MenuServiceProvider extends ServiceProvider
       ->addSubmenu('Tickets', function ($menu) {
         $menu->add('List Tickets', 'ticket.index');
         $menu->add('Add Tickets', 'ticket.create');
+      }, '')
+      ->addSubmenu('Contact', function ($menu) {
+        $menu->add('List Contact', 'dashboard.contact.index');
       }, '');
   }
 }

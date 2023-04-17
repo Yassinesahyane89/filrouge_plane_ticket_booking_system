@@ -10,10 +10,10 @@
                                 <div class="logo"><a href="index.html"><img src="assets/img/logo.png" alt=""></a></div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
-                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li class="active"><a href="{{ route('landing') }}">Home</a></li>
                                         <li><a href="#">About</a></li>
                                         <li><a href="#">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{ route('contact.index') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </nav>
