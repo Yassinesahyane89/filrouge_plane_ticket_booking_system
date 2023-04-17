@@ -3,6 +3,7 @@
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\PassengerController;
@@ -28,9 +29,9 @@ Route::redirect('/', '/login', 301)->name('index');
 Route::get('/landing', function () {
   return view('content.mywebsite.landing-page');
 })->name('landing');
-Route::get('/contact', function () {
-  return view('content.mywebsite.contact');
-})->name('contact');
+// Route::get('/contact', function () {
+//   return view('content.mywebsite.contact');
+// })->name('contact');
 Route::get('/bookingdetails', function () {
   return view('content.mywebsite.booking-details');
 })->name('bookingdetails');
@@ -109,4 +110,9 @@ Route::prefix('ticket')->middleware('auth')->group(function () {
   Route::get('edit/{id}', [TicketController::class, 'edit'])->name('ticket.edit');
   Route::get('delete/{id}', [TicketController::class, 'delete'])->name('ticket.delete');
   Route::get('chnage/status/{id}', [TicketController::class, 'change_status'])->name('ticket.change.status');
+});
+
+Route::prefix('contact')->group(function () {
+  Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+  Route::post('store', [ContactController::class, 'store'])->name('contact.store');
 });

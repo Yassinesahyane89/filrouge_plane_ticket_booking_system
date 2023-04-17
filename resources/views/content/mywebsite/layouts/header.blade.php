@@ -11,8 +11,8 @@
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
                                         <li class="active"><a href="index.html">Home</a></li>
-                                        <li><a href="booking-list.html">Booking List</a></li>
-                                        <li><a href="booking-details.html">Booking Details</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Blog</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>

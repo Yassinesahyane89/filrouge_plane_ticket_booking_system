@@ -13,31 +13,32 @@
                                 <h2 class="title">Write a Message</h2>
                             </div>
                             <div class="contact-form">
-                                <form action="#">
+                                <form action="{{ route('contact.store') }}" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-grp">
-                                                <input type="text" placeholder="Your Name *">
+                                                <input type="text" name="name" placeholder="Your Name *">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-grp">
-                                                <input type="email" placeholder="Your Email *">
+                                                <input type="email" name="email" placeholder="Your Email *">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-grp">
-                                                <input type="text" placeholder="Subject">
+                                                <input type="text" name="subject" placeholder="Subject">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-grp">
-                                                <input type="number" placeholder="Your Mobile">
+                                                <input type="number" name="mobile" placeholder="Your Mobile">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-grp">
-                                        <textarea name="message" placeholder="Message"></textarea>
+                                        <textarea name="message" name="message" placeholder="Message"></textarea>
                                     </div>
                                     <div class="submit-btn text-center">
                                         <button type="submit" class="btn">Submit</button>
