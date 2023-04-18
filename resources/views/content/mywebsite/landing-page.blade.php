@@ -6,22 +6,51 @@
             <div class="booking-area position-relative">
                 <div class="container">
                     <div class="bg-white p-4 rounded-3">
-                        <form action="#">
+                        <form  action="{{ route('flightlist.index') }}" method="POST">
+                            @csrf
                             <div class="booking-details-wrap d-flex flex-wrap p-1">
                                 <div class="col-md-4 d-flex flex-column p-1">
                                     <div class="">
                                         <div class="form-grp">
                                             <div class="form">
-                                                <label for="email">Airport departur</label>
-                                                <input type="text" >
+                                                <label for="departureAirport">Airport departur</label>
+                                                <select name="departureAirport" id="departureAirport">
+                                                    <option value="">Please select</option>
+                                                    @foreach ($airports as $airport)
+                                                      <option value="{{$airport->id}}">{{ $airport->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="">
                                         <div class="form-grp">
                                             <div class="form">
-                                                <label for="email">Airport Arrival</label>
-                                                <input type="text">
+                                                <label for="arrivalAirport">Airport Arrival</label>
+                                                <select name="arrivalAirport" id="arrivalAirport">
+                                                    <option value="">Please select</option>
+                                                    @foreach ($airports as $airport)
+                                                      <option value="{{$airport->id}}">{{ $airport->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex flex-column p-1">
+                                    <div class="">
+                                        <div class="form-grp">
+                                            <div class="form">
+                                                <label for="departureDate">Date departeur</label>
+                                                <input type="date" id="departureDate" name="departureDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="form-grp">
+                                            <div class="form">
+                                                <label for="arrivalDate">Date Arrival</label>
+                                                <input type="date" id="arrivalDate" name="arrivalDate">
                                             </div>
                                         </div>
                                     </div>
@@ -30,34 +59,21 @@
                                     <div class="">
                                         <div class="form-grp">
                                             <div class="form">
-                                                <label for="email">Date departeur</label>
-                                                <input type="date" id="departureDate">
+                                                <label for="numberPassenger">Number passenger</label>
+                                                <input type="number" id="numberPassenger" name="numberPassenger">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="">
                                         <div class="form-grp">
                                             <div class="form">
-                                                <label for="email">Date Arrival</label>
-                                                <input type="date" id="arrivalDate">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                    <div class="col-md-4 d-flex flex-column p-1">
-                                    <div class="">
-                                        <div class="form-grp">
-                                            <div class="form">
-                                                <label for="email">Number passenger</label>
-                                                <input type="number">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="">
-                                        <div class="form-grp">
-                                            <div class="form">
-                                                <label for="email">class</label>
-                                                <input type="text" id="email" >
+                                                <label for="class">class</label>
+                                                <select name="class" id="class">
+                                                    <option value="">Please select</option>
+                                                    @foreach ($classes as $class)
+                                                      <option value="{{$class->id}}">{{ $class->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

@@ -53,3 +53,4 @@
         <button class="btn btn-primary" wire:click="update" wire:loading.attr="disabled">Save</button>
     </div>
 </div>
+ 

@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\BookingDetailController;
 use App\Http\Controllers\CabinController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\flightlistController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\SearchFlightController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -27,10 +30,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::redirect('/', '/login', 301)->name('index');
 
-// ROUT FOR VIEW landing page
-Route::get('/landing', function () {
-  return view('content.mywebsite.landing-page');
-})->name('landing');
 Route::get('/bookingdetails', function () {
   return view('content.mywebsite.booking-details');
 })->name('bookingdetails');
@@ -121,6 +120,11 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
   Route::post('store', 'store')->name('contact.store');
 });
 
-Route::group(['controller' => DashboardContactController::class, 'prefix' => 'dashboard/contact'], function () {
-  Route::get('', 'index')->name('dashboard.contact.index');
-});
+Route::get('dashboard/contact', [DashboardContactController::class,'index'])->name('dashboard.contact.index');
+Route::get('landing', [SearchFlightController::class,'index'])-> name('landing');
+
+
+Route::post('flightlist', [flightlistController::class, 'index'])->name('flightlist.index');
+
+Route::post('bookingdetail', [BookingDetailController::class, 'index'])->name('bookingdetail.index');
+Route::post('bookingdetail/store', [BookingDetailController::class, 'store'])->name('bookingdetail.store');

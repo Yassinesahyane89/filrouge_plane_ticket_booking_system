@@ -1,48 +1,18 @@
 <div class="card mb-4">
     <h5 class="card-header">{{MODEL_NAME}} List</h5>
-
-    <div class="card-body">
-        <div class="row">
-            {{-- <x-form.select patternClass="col-md-4" label="Status:" wire:model="status" name="status"
-                :options="[
-                    [
-                        'value' => '',
-                        'text' => 'All',
-                        'selected' => false,
-                    ],
-                    [
-                        'value' => '1',
-                        'text' => 'Active',
-                        'selected' => false,
-                    ],
-                    [
-                        'value' => '0',
-                        'text' => 'Inactive',
-                        'selected' => false,
-                    ],
-                ]" /> --}}
-
-            {{-- <x-form.select class="col-md-4" label="Role" wire:model="role">
-            <option value="">All</option>
-            @foreach ($roles as $role)
-                <option value="{{ $role->id }}">{{ $role->name }}</option>
-            @endforeach
-        </x-form.select> --}}
-        </div>
-    </div>
     <hr class="mt-0">
     <div class="card-datatable text-nowrap">
         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <div class="dataTables_length" id="DataTables_Table_0_length">
-                        <label> Show 
+                        <label> Show
                             <select wire:model="perPage" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
                                 <option value="10">10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
-                            </select> 
+                            </select>
                             entries
                         </label>
                     </div>

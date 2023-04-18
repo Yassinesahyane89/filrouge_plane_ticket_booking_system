@@ -34,51 +34,57 @@
             <!-- booking-details-area -->
             <section class="booking-details-area">
                 <div class="container">
+                  <form action="{{ route('bookingdetail.store') }}"  method="POST">
+                    @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
-                            <div class="primary-contact">
-                                <i class="fa-regular fa-user"></i>
-                                <h2 class="title">Passenger 1: Ms (Primary Contact)</h2>
-                            </div>
-                            <div class="booking-details-wrap">
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="firstname">First Name</label>
-                                                    <input type="text" id="firstname" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="lastname">last Name</label>
-                                                    <input type="text" id="lastname">
-                                                </div>
-                                            </div>
-                                        </div>
+                          @for ($i = 1; $i <= $numberPassenger; $i++)
+                            <div style="margin-bottom: 20px;">
+                                <div class="primary-contact">
+                                    <i class="fa-regular fa-user"></i>
+                                    <h2 class="title">Passenger {{$i}}</h2>
+                                </div>
+                                <div class="booking-details-wrap">
+                                  <div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-grp">
+                                                  <div class="form">
+                                                      <label for="firstname">First Name</label>
+                                                      <input type="text" id="firstname" name="firstname[]">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-grp">
+                                                  <div class="form">
+                                                      <label for="lastname">last Name</label>
+                                                      <input type="text" id="lastname" name="lastname[]">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-grp">
+                                                  <div class="form">
+                                                      <input type="number" placeholder="Mobile Number" name="mobileNumber[]">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <div class="form-grp">
+                                                  <div class="form">
+                                                      <label for="email">Your Email</label>
+                                                      <input type="email" id="email" placeholder="youinfo@gmail.com" name="email[]">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <input type="number" placeholder="Mobile Number *">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="email">Your Email</label>
-                                                    <input type="email" id="email" placeholder="youinfo@gmail.com">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
+                          @endfor
                         </div>
                         <div class="leftbare">
                             <aside class="booking-sidebar">
@@ -99,12 +105,13 @@
                                             <li>Discount<span>- $110</span></li>
                                             <li>Total Payable<span>$981.00</span></li>
                                         </ul>
-                                        <a href="#" class="btn">Pay now</a>
+                                        <button class="btn">Pay now</button>
                                     </div>
                                 </div>
                             </aside>
                         </div>
                     </div>
+                  </form>
                 </div>
             </section>
             <!-- booking-details-area-end -->
