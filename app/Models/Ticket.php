@@ -29,6 +29,6 @@ class Ticket extends Model
 
   public function passenger()
   {
-    return $this->belongsTo(Passenger::class);
+    return $this->hasOne(Passenger::class);
   }
 }

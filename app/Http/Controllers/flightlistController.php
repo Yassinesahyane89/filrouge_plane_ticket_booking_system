@@ -18,7 +18,6 @@ class flightlistController extends Controller
           ->whereDate('arrivalDate', '=', $request['arrivalDate'])
           ->get();
 
-    dd(count($flights));
     return view('content.mywebsite.booking-list', ['flights' => $flights, 'numberPassenger' => $request['numberPassenger'], 'class' => $request['class']]);
   }
 }

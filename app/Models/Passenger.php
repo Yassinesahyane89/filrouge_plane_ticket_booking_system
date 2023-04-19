@@ -16,4 +16,8 @@ class Passenger extends Model
     'email',
     'phone_number'
   ];
+
+  public function ticket(){
+    return $this->hasOne(Ticket::class);
+  }
 }
