@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FlightlistRequest;
 use App\Models\Flight;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class flightlistController extends Controller
@@ -15,8 +16,9 @@ class flightlistController extends Controller
           ->where('to_airport_id', $request['arrivalAirport'])
           ->whereDate('departureDate', '=', $request['departureDate'])
           ->whereDate('arrivalDate', '=', $request['arrivalDate'])
-          ->with(['fromAirport', 'toAirport'])
           ->get();
+
+    dd(count($flights));
     return view('content.mywebsite.booking-list', ['flights' => $flights, 'numberPassenger' => $request['numberPassenger'], 'class' => $request['class']]);
   }
 }

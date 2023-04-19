@@ -15,7 +15,6 @@ return new class extends Migration
       $table->id();
       $table->decimal('price');
       $table->foreignId('passenger_id');
-      $table->foreignId('user_id');
       $table->foreignId('flight_id');
       $table->foreignId('seat_id');
       $table->timestamps();

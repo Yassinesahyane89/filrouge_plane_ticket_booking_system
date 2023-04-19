@@ -14,12 +14,12 @@ class Plan extends Model
     'number'
   ];
 
-  public function seat()
+  public function seats()
   {
     return $this->hasMany(Seat::class);
   }
 
-  public function flight()
+  public function flights()
   {
     return $this->hasMany(Flight::class);
   }

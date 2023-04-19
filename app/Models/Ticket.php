@@ -14,7 +14,6 @@ class Ticket extends Model
     'price',
     'seat_id',
     'flight_id',
-    'user_id',
     'passenger_id'
   ];
 
@@ -26,11 +25,6 @@ class Ticket extends Model
   public function flight()
   {
     return $this->belongsTo(Flight::class);
-  }
-
-  public function user()
-  {
-    return $this->belongsTo(User::class);
   }
 
   public function passenger()
