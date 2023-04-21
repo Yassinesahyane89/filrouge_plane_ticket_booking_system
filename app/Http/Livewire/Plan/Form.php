@@ -18,7 +18,6 @@ class Form extends Component
   {
     return [
       'plan.number' => 'required|min:6',
-      'seats.*.price' => 'required|numeric',
       'seats.*.quantity' => 'required|numeric',
       'seats.*.cabin_id' => 'required|numeric',
     ];
@@ -27,7 +26,6 @@ class Form extends Component
   public function addSeat()
   {
     $this->seats[] = [
-      'price' => 1,
       'quantity' => 1,
     ];
   }
@@ -42,7 +40,7 @@ class Form extends Component
   {
     $this->plan = $plan;
 
-    $this->seats = $plan->seat->toArray();
+    $this->seats = $plan->seats->toArray();
 
     $this->cabins = Cabin::all();
 
@@ -62,11 +60,10 @@ class Form extends Component
 
     $this->plan->save();
 
-    $this->plan->seat()->delete();
+    $this->plan->seats()->delete();
 
     foreach ($this->seats as $seat) {
-      $this->plan->seat()->create([
-        'price' => $seat['price'],
+      $this->plan->seats()->create([
         'quantity' => $seat['quantity'],
         'cabin_id' => $seat['cabin_id'],
       ]);

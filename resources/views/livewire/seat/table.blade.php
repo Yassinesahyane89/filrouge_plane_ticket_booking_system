@@ -34,9 +34,6 @@
                             <th class="sorting {{ $sortBy == "quantity" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('quantity')" aria-controls="DataTables_Table_0">
                                 quantity
                             </th>
-                            <th class="sorting {{ $sortBy == "price" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('price')" aria-controls="DataTables_Table_0">
-                                price
-                            </th>
                             <th class="sorting {{ $sortBy == "cabin_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('cabin_id')" aria-controls="DataTables_Table_0">
                                 Class name
                             </th>
@@ -52,7 +49,6 @@
                         @forelse ($seats['data'] as $seat)
                             <tr>
                                 <td><strong>{{ $seat['quantity'] }}</strong></td>
-                                <td>{{ $seat['price'] }}</td>
                                 <td>{{ $seat['cabin']['name'] }}</td>
                                 <td>{{ $seat['plan']['number'] }}</td>
                                 <td>

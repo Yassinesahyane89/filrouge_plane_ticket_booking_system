@@ -4,7 +4,6 @@
     @foreach ($seats as $seat)
       <div class="row">
           <x-form.input name="seats" label="quantity" patternClass="col-3" wire:model="seats.{{ $loop->index }}.quantity" />
-          <x-form.input name="seats" label="price:" patternClass="col-3" wire:model="seats.{{ $loop->index }}.price" />
 
             <div class="form-group col-3">
               <label for="" class="form-label">cabin</label>

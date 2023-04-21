@@ -19,7 +19,6 @@ class Form extends Component
       'seat.quantity' => 'required|numeric|min:1',
       'seat.cabin_id' => 'required|numeric',
       'seat.plan_id' => 'required|numeric',
-      'seat.price' => 'required|numeric|min:1',
     ];
   }
 

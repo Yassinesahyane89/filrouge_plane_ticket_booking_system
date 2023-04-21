@@ -64,39 +64,39 @@
         <form   action="{{ route('user-profile-information.update') }}" method="POST" >
           @csrf
           @method('put')
-          
+
           <div class="row">
             <div class="mb-3 col-md-6">
               <label for="firstName" class="form-label">Name</label>
-             
-              <input 
-              class="form-control" 
-              type="text" id="name" 
-              name="name" 
+
+              <input
+              class="form-control"
+              type="text" id="name"
+              name="name"
               placeholder="Please enter  name"
               value="{{ Auth::user()->name }}"
                />
               @error('name')
               <span id="" class="error">{{ $message }}</span>
               @enderror
-          
+
             </div>
             <div class="mb-3 col-md-6">
               <label for="email" class="form-label">E-mail</label>
-       
-              <input 
 
-              class="form-control" 
-              type="email" 
-              id="email" 
-              name="email" 
+              <input
+
+              class="form-control"
+              type="email"
+              id="email"
+              name="email"
               value= " {{ Auth::user()->email }} "
               placeholder="Email" />
 
               @error('email')
               <span id="" class="error">{{ $message }}</span>
             @enderror
-      
+
             </div>
           </div>
           <div class="mt-2">

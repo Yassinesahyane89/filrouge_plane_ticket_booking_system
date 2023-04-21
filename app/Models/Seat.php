@@ -10,7 +10,6 @@ class Seat extends Model
     use HasFactory;
 
     protected $fillable = [
-      'id',
       'quantity',
       'plan_id',
       'cabin_id'

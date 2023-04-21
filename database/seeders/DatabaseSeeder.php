@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             AirportSeeder::class,
             CabinSeeder::class,
+            PlanSeeder::class,
           ]);
     }
 }

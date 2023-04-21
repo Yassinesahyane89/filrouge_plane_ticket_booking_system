@@ -10,7 +10,7 @@ class FlightFare extends Model
     use HasFactory;
 
   protected $fillable = [
-    'price',
+    'fare',
     'flight_id',
     'cabin_id'
   ];
@@ -20,9 +20,9 @@ class FlightFare extends Model
     return $this->belongsTo(Flight::class);
   }
 
-  public function class()
+  public function cabin()
   {
     return $this->belongsTo(Cabin::class);
   }
-  
+
 }

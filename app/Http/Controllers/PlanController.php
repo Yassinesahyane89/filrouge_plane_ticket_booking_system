@@ -14,7 +14,7 @@ class PlanController extends Controller
     public function create()
     {
         return view('content.plan.form', [
-            'plan' => new Plan(),
+            'plan' => new Plan()
         ]);
     }
 
