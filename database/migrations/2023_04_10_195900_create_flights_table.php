@@ -17,7 +17,7 @@ return new class extends Migration
       $table->dateTime('arrivalDate');
       $table->foreignId('from_airport_id');
       $table->foreignId('to_airport_id');
-      $table->foreignId('plan_id');
+      $table->foreignId('plan_id')->constrained()->onDelete('cascade');
       $table->timestamps();
     });
   }

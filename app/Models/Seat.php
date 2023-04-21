@@ -13,7 +13,6 @@ class Seat extends Model
       'id',
       'quantity',
       'plan_id',
-      'price',
       'cabin_id'
     ];
 
