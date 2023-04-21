@@ -26,4 +26,9 @@ class Seat extends Model
     {
       return $this->belongsTo(Plan::class);
     }
+
+    public function tickets()
+    {
+      return $this->hasOne(Ticket::class);
+    }
 }

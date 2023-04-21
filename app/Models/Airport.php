@@ -15,7 +15,7 @@ class Airport extends Model
     'city_id'
   ];
 
-  public function City()
+  public function city()
   {
     return $this->belongsTo(City::class);
   }
