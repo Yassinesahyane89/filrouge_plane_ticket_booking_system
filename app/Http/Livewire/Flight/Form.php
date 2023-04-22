@@ -21,8 +21,8 @@ class Form extends Component
   protected function rules()
   {
     return [
-      'flight.departureDate' => 'required|after_or_equal:today',
-      'flight.arrivalDate' => 'required|after:flight.departureDate',
+      'flight.departure_date' => 'required|after_or_equal:today',
+      'flight.arrival_date' => 'required|after:flight.departure_date',
       'flight.from_airport_id' => 'required',
       'flight.to_airport_id' => 'required',
       'flight.plan_id' => 'required',

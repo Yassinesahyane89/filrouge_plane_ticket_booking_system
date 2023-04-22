@@ -13,8 +13,8 @@ return new class extends Migration
   {
     Schema::create('flights', function (Blueprint $table) {
       $table->id();
-      $table->dateTime('departureDate');
-      $table->dateTime('arrivalDate');
+      $table->dateTime('departure_date');
+      $table->dateTime('arrival_date');
       $table->foreignId('from_airport_id');
       $table->foreignId('to_airport_id');
       $table->foreignId('plan_id')->constrained()->onDelete('cascade');

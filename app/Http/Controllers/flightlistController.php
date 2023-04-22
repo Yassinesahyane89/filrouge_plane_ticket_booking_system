@@ -10,14 +10,34 @@ use Illuminate\Http\Request;
 
 class flightlistController extends Controller
 {
-  public function index(FlightlistRequest $request)
+  public function index(Request $request)
   {
-   $flights = Flight::where('from_airport_id', $request['departureAirport'])
-          ->where('to_airport_id', $request['arrivalAirport'])
-          ->whereDate('departureDate', '=', $request['departureDate'])
-          ->get();
-    $classId = $request->class;
-    $numberOfPassengers = $request->numberPassenger;
+     $flights = Flight::where('from_airport_id', $request['departureAirport'])
+            ->where('to_airport_id', $request['arrivalAirport'])
+            ->whereDate('departure_date', '=', $request['departureDate'])
+            ->get();
+      $classId = $request->class;
+      $numberOfPassengers = $request->numberPassenger;
+
+    // $flights = Flight::query();
+
+    // if ($request->has('departureAirport')) {
+    //   $flights->where('from_airport_id', $request->departureAirport);
+    //   // dd($flights->get());
+    // }
+
+    // // dd(count($flights->get()));
+
+    // // if ($request->has('arrivalAirport')) {
+    // //   $flights->where('to_airport_id', $request->arrivalAirport);
+    // // }
+
+    // // if ($request->has('departureDate')) {
+    // //   $flights->whereDate('departure_date', '=', $request->departureDate);
+    // // }
+
+    // $flights->get();
+
 
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);

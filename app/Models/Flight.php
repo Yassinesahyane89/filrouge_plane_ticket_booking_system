@@ -13,8 +13,8 @@ class Flight extends Model
     'id',
     'from_airport_id',
     'to_airport_id',
-    'departure_time',
-    'arrival_time',
+    'departure_date',
+    'arrival_date',
     'plan_id'
   ];
 

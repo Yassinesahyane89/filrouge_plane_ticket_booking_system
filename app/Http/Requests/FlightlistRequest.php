@@ -22,10 +22,10 @@ class FlightlistRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'departureAirport' => 'required|exists:airports,id',
-            'arrivalAirport' => 'required|exists:airports,id',
-            'departureDate' => 'required|date',
-            'arrivalDate' => 'required|date',
+            'departureAirport' => 'exists:airports,id',
+            'arrivalAirport' => 'exists:airports,id',
+            'departureDate' => 'date',
+            'arrivalDate' => 'date',
             'numberPassenger' => 'required|integer|min:1',
             'class' => 'required|exists:cabins,id',
         ];

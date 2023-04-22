@@ -31,11 +31,11 @@
                     aria-describedby="DataTables_Table_0_info">
                     <thead>
                         <tr>
-                            <th class="sorting {{ $sortBy == "departureDate" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('departureDate')" aria-controls="DataTables_Table_0">
-                                departureDate
+                            <th class="sorting {{ $sortBy == "departure_date" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('departure_date')" aria-controls="DataTables_Table_0">
+                                departure_date
                             </th>
-                            <th class="sorting {{ $sortBy == "arrivalDate" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('arrivalDate')" aria-controls="DataTables_Table_0">
-                                arrivalDate
+                            <th class="sorting {{ $sortBy == "arrival_date" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('arrival_date')" aria-controls="DataTables_Table_0">
+                                arrival_date
                             </th>
                             <th class="sorting {{ $sortBy == "from_airport_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('from_airport_id')" aria-controls="DataTables_Table_0">
                                 Airport departure
@@ -54,8 +54,8 @@
                     <tbody>
                         @forelse ($flights['data'] as $flight)
                             <tr>
-                                <td><strong>{{ $flight['departureDate'] }}</strong></td>
-                                <td><strong>{{ $flight['arrivalDate'] }}</strong></td>
+                                <td><strong>{{ $flight['departure_date'] }}</strong></td>
+                                <td><strong>{{ $flight['arrival_date'] }}</strong></td>
                                 <td><strong>{{ $flight['from_airport']['name'] }}</strong></td>
                                 <td><strong>{{ $flight['to_airport']['name'] }}</strong></td>
                                 <td><strong>{{ $flight['plan']['number'] }}</strong></td>
