@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Flight;
 
+use App\Models\Cabin;
 use App\Models\Flight;
+use App\Models\FlightFare;
 use Livewire\Component;
 
 class Table extends Component
@@ -11,7 +13,10 @@ class Table extends Component
     'data' => [],
     'links' => [],
     'meta' => [],
+    'flightFares' => [],
   ];
+
+  public $cabins = [];
 
   protected $queryString = [
     'search' => ['except' => ''],
@@ -54,14 +59,15 @@ class Table extends Component
   {
     $this->flights = Flight::when(!empty($this->search), function ($query) {
       $query->where('departure_date', 'like', '%' . $this->search . '%');
-      // ->orWhere('email', 'like', '%' . $this->search . '%');
     })
       ->orderBy($this->sortBy, $this->sortDirection)
-      ->with('fromAirport', 'toAirport', 'plan')
+      ->with('fromAirport', 'toAirport', 'plan', 'flightFares')
       ->paginate($this->perPage, ['*'], 'page', $this->currentPage)
       ->toArray();
 
-      info('flights', $this->flights);
+
+    // cabin data
+    $this->cabins = Cabin::all();
   }
 
   public function render()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,18 @@ class BookingDetailController extends Controller
   public function index(Request $request)
   {
     $flight = $request['flight_id'];
-    $numberPassenger = $request['numberPassenger'];
-    $class = $request['class'];
+    $numberOfPassengers = $request['numberOfPassengers'];
+    $class = $request['classId'];
 
-    return view('content.mywebsite.booking-details', ['flight' => $flight, 'numberPassenger' => $numberPassenger, 'class' => $class]);
+    $price = Flight::where('id', $flight)
+      ->whereHas('flightFares', function ($query) use ($class) {
+        $query->where('cabin_id', $class);
+      })
+      ->firstOrFail()
+      ->flightFares[0]['fare'];
+
+    // dd($price);
+    return view('content.mywebsite.booking-details', ['flight' => $flight, 'numberOfPassengers' => $numberOfPassengers, 'class' => $class, 'price' => $price]);
   }
   public function store(Request $request)
   {

@@ -38,7 +38,7 @@
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
-                          @for ($i = 1; $i <= $numberPassenger; $i++)
+                          @for ($i = 1; $i <= $numberOfPassengers; $i++)
                             <div style="margin-bottom: 20px;">
                                 <div class="primary-contact">
                                     <i class="fa-regular fa-user"></i>
@@ -99,11 +99,9 @@
                                     </div>
                                     <div class="price-summary-detail">
                                         <ul>
-                                            <li>Adult x 1 <span>$1,056</span></li>
-                                            <li>Tax x 1 <span>$35</span></li>
-                                            <li>Total Airfare: <span>$1,091</span></li>
-                                            <li>Discount<span>- $110</span></li>
-                                            <li>Total Payable<span>$981.00</span></li>
+                                            <li>Adult x 1 <span>{{ $numberOfPassengers}}</span></li>
+                                            <li>price x 1 <span>{{ $price }}</span></li>
+                                            <li>Total Payable<span>{{ $numberOfPassengers * $price}}.00</span></li>
                                         </ul>
                                         <button class="btn">Pay now</button>
                                     </div>

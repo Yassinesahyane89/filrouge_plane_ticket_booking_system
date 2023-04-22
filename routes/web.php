@@ -36,6 +36,9 @@ Route::get('/bookingdetails', function () {
 Route::get('/bookinglist', function () {
   return view('content.mywebsite.booking-list');
 })->name('bookinglist');
+Route::get('/payment', function () {
+  return view('content.mywebsite.payment');
+})->name('payment');
 
 // Route::prefix('country')->middleware('auth')->group(function () {
 //   Route::get('/', [CountryController::class, 'index'])->name('country.index');

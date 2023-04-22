@@ -26,7 +26,7 @@ class FlightSeeder extends Seeder
         $cabins = Cabin::all();
         $cabinIds = $cabins->pluck('id');
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
           $departureDate = now()->addDays($i)->setTime(10, 0);
           $arrivalDate = $departureDate->copy()->addHours(4);
 

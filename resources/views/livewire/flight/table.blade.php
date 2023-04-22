@@ -46,6 +46,12 @@
                             <th class="sorting {{ $sortBy == "plan_id" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('plan_id')" aria-controls="DataTables_Table_0">
                                 plan
                             </th>
+                            {{-- add column for price for each class --}}
+                            {{-- @foreach ($cabins as $cabin)
+                              <th class="sorting {{ $sortBy == "price" ? 'sorting_'.$sortDirection : '' }}" wire:click="sortBy('price')" aria-controls="DataTables_Table_0">
+                                  price| {{ $cabin->name }}
+                              </th>
+                            @endforeach --}}
                             <th aria-controls="DataTables_Table_0">
                                 Action
                             </th>
@@ -59,6 +65,9 @@
                                 <td><strong>{{ $flight['from_airport']['name'] }}</strong></td>
                                 <td><strong>{{ $flight['to_airport']['name'] }}</strong></td>
                                 <td><strong>{{ $flight['plan']['number'] }}</strong></td>
+                                {{-- @foreach ($flight['flightFares'] as $flightFare)
+                                    <td><strong>{{ $flightFare['fare'] }}</strong></td>
+                                @endforeach --}}
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
