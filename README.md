@@ -80,6 +80,10 @@ The Plane Ticket Booking System has the following features:
 - As an administrator, I can edit or delete all passengers.
 - As an administrator, I can edit and delete user roles, and assign access permissions to each role.
 
+## UML
+
+  - class diagram : https://lucid.app/lucidchart/6dda2a62-88ed-4355-a050-92bd03e12baa/edit?viewport_loc=-2519%2C-537%2C5298%2C2503%2C0_0&invitationId=inv_1793b320-f87b-4bf4-bad1-65d434016651
+  - use case : https://lucid.app/lucidchart/1d6fe434-8cc7-4612-91aa-e5543fd769d4/edit?viewport_loc=-304%2C765%2C3454%2C1632%2CHWEp-vi-RSFO&invitationId=inv_df643e5a-1bfc-4754-bac4-cd001662480d
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
