@@ -1,23 +1,22 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\AirportController;
 use App\Http\Controllers\BookingDetailController;
-use App\Http\Controllers\CabinController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\DashboardContactController;
-use App\Http\Controllers\FlightController;
+use App\Http\Controllers\dashboard\AccountController;
+use App\Http\Controllers\dashboard\AirportController;
+use App\Http\Controllers\dashboard\CabinController;
+use App\Http\Controllers\dashboard\CityController;
+use App\Http\Controllers\dashboard\ContactController;
+use App\Http\Controllers\dashboard\CountryController;
+use App\Http\Controllers\dashboard\FlightController;
+use App\Http\Controllers\dashboard\HomePage;
+use App\Http\Controllers\dashboard\PassengerController;
+use App\Http\Controllers\dashboard\PlanController;
+use App\Http\Controllers\dashboard\RolePermissionsController;
+use App\Http\Controllers\dashboard\SeatController;
+use App\Http\Controllers\dashboard\TicketController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\flightlistController;
-use App\Http\Controllers\pages\HomePage;
-use App\Http\Controllers\PassengerController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\RolePermissionsController;
 use App\Http\Controllers\SearchFlightController;
-use App\Http\Controllers\SeatController;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -48,15 +47,15 @@ Route::get('/payment', function () {
  * home
  */
 
-Route::get('home', [HomePage::class, 'index'])->middleware('auth')->name('home');
+Route::get('dashboard/home', [HomePage::class, 'index'])->middleware('auth')->name('home');
 
 /**
  * account
  */
 
-Route::group(['controller' => AccountController::class, 'prefix' => 'account'], function () {
+Route::group(['controller' => AccountController::class, 'prefix' => 'dashboard/account'], function () {
   Route::get('settings', 'account')->name('account.settings');
-  Route::post('account/image', 'account_image')->name('account.settings.image');
+  Route::post('image', 'account_image')->name('account.settings.image');
   Route::get('settings/security', 'security')->name('account.settings.security');
 });
 
@@ -64,7 +63,7 @@ Route::group(['controller' => AccountController::class, 'prefix' => 'account'], 
  * user
  */
 
-Route::group(['controller' => UserController::class, 'prefix' => 'user'], function () {
+Route::group(['controller' => UserController::class, 'prefix' => 'dashboard/user'], function () {
   Route::get('/', 'index')->name('user.index');
   Route::get('create', 'create')->name('user.create');
   Route::get('edit/{id}', 'edit')->name('user.edit');
@@ -76,7 +75,7 @@ Route::group(['controller' => UserController::class, 'prefix' => 'user'], functi
  * role
  */
 
-Route::group(['controller' => RolePermissionsController::class, 'prefix' => 'role'], function () {
+Route::group(['controller' => RolePermissionsController::class, 'prefix' => 'dashboard/role'], function () {
   Route::get('/', 'index')->name('role.index');
   Route::get('save', 'save')->name('role.save');
 });
@@ -85,7 +84,7 @@ Route::group(['controller' => RolePermissionsController::class, 'prefix' => 'rol
  * country
  */
 
-Route::group(['controller' => CountryController::class, 'prefix' => 'country'], function () {
+Route::group(['controller' => CountryController::class, 'prefix' => 'dashboard/country'], function () {
   Route::get('/','index')->name('country.index');
   Route::get('create', 'create')->name('country.create');
   Route::get('edit/{id}', 'edit')->name('country.edit');
@@ -98,7 +97,7 @@ Route::group(['controller' => CountryController::class, 'prefix' => 'country'], 
  * city
  */
 
-Route::group(['controller' => CityController::class, 'prefix' => 'city'], function () {
+Route::group(['controller' => CityController::class, 'prefix' => 'dashboard/city'], function () {
   Route::get('/', 'index')->name('city.index');
   Route::get('create', 'create')->name('city.create');
   Route::get('edit/{id}', 'edit')->name('city.edit');
@@ -111,7 +110,7 @@ Route::group(['controller' => CityController::class, 'prefix' => 'city'], functi
  * airport
  */
 
-Route::group(['controller' => AirportController::class, 'prefix' => 'airport'], function () {
+Route::group(['controller' => AirportController::class, 'prefix' => 'dashboard/airport'], function () {
   Route::get('/', 'index')->name('airport.index');
   Route::get('create', 'create')->name('airport.create');
   Route::get('edit/{id}', 'edit')->name('airport.edit');
@@ -124,7 +123,7 @@ Route::group(['controller' => AirportController::class, 'prefix' => 'airport'], 
  * cabin
  */
 
-Route::group(['controller' => CabinController::class, 'prefix' => 'cabin'], function () {
+Route::group(['controller' => CabinController::class, 'prefix' => 'dashboard/cabin'], function () {
   Route::get('/', 'index')->name('cabin.index');
   Route::get('create', 'create')->name('cabin.create');
   Route::get('edit/{id}', 'edit')->name('cabin.edit');
@@ -137,7 +136,7 @@ Route::group(['controller' => CabinController::class, 'prefix' => 'cabin'], func
  * seat
  */
 
-Route::group(['controller' => SeatController::class, 'prefix' => 'seat'], function () {
+Route::group(['controller' => SeatController::class, 'prefix' => 'dashboard/seat'], function () {
   Route::get('/', 'index')->name('seat.index');
   Route::get('create', 'create')->name('seat.create');
   Route::get('edit/{id}', 'edit')->name('seat.edit');
@@ -151,7 +150,7 @@ Route::group(['controller' => SeatController::class, 'prefix' => 'seat'], functi
  */
 
 
-Route::group(['controller' => PlanController::class, 'prefix' => 'plan'], function () {
+Route::group(['controller' => PlanController::class, 'prefix' => 'dashboard/plan'], function () {
   Route::get('/', 'index')->name('plan.index');
   Route::get('create', 'create')->name('plan.create');
   Route::get('edit/{id}', 'edit')->name('plan.edit');
@@ -164,7 +163,7 @@ Route::group(['controller' => PlanController::class, 'prefix' => 'plan'], functi
  * flight
  */
 
-Route::group(['controller' => FlightController::class, 'prefix' => 'flight'], function () {
+Route::group(['controller' => FlightController::class, 'prefix' => 'dashboard/flight'], function () {
   Route::get('/', 'index')->name('flight.index');
   Route::get('create', 'create')->name('flight.create');
   Route::get('edit/{id}', 'edit')->name('flight.edit');
@@ -177,7 +176,7 @@ Route::group(['controller' => FlightController::class, 'prefix' => 'flight'], fu
  * passenger
  */
 
-Route::group(['controller' => PassengerController::class, 'prefix' => 'passenger'], function () {
+Route::group(['controller' => PassengerController::class, 'prefix' => 'dashboard/passenger'], function () {
   Route::get('/', 'index')->name('passenger.index');
   Route::get('create', 'create')->name('passenger.create');
   Route::get('edit/{id}', 'edit')->name('passenger.edit');
@@ -189,7 +188,7 @@ Route::group(['controller' => PassengerController::class, 'prefix' => 'passenger
  * ticket
  */
 
-Route::group(['controller' => TicketController::class, 'prefix' => 'ticket'], function () {
+Route::group(['controller' => TicketController::class, 'prefix' => 'dashboard/ticket'], function () {
   Route::get('/', 'index')->name('ticket.index');
   Route::get('create', 'create')->name('ticket.create');
   Route::get('edit/{id}', 'edit')->name('ticket.edit');
@@ -206,7 +205,7 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
   Route::post('store', 'store')->name('contact.store');
 });
 
-Route::get('dashboard/contact', [DashboardContactController::class,'index'])->name('dashboard.contact.index');
+Route::get('dashboard/contact', [ContactController::class,'index'])->name('dashboard.contact.index');
 
 
 

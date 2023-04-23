@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Contact;
 
-class DashboardContactController extends Controller
+class ContactController extends Controller
 {
     public function index()
     {

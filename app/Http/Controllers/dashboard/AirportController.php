@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Airport;
 
 class AirportController extends Controller
