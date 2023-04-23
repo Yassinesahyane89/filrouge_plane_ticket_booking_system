@@ -38,7 +38,7 @@ class Form extends Component
 
     $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => 'success', 'message' => 'passenger updated successfully!']);
 
-    return redirect('passenger');
+    return redirect('dashboard/passenger');
   }
 
   public function render()

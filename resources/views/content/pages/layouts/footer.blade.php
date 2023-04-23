@@ -70,6 +70,26 @@
         </footer>
         <!-- footer-area-end -->
         <!-- JS here -->
+        {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+        {{-- @if ($errors->any())
+          <script>
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: '{{ $errors->first() }}',
+              });
+          </script>
+        @endif --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+         @if ($errors->any())
+          <script>
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: '{{ $errors->first() }}',
+              });
+          </script>
+        @endif
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>

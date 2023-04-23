@@ -8,6 +8,7 @@ use App\Models\Flight;
 use App\Models\Passenger;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingController extends Controller
 {
@@ -20,7 +21,18 @@ class BookingController extends Controller
 
   public function searchFlight(Request $request)
   {
-    dd("fgjjg");
+    $departureAirport = $request->input('departureAirport');
+    $arrivalAirport = $request->input('arrivalAirport');
+    $departureDate = $request->input('departureDate');
+    $arrivalDate = $request->input('arrivalDate');
+    $numberOfPassengers = $request->input('numberPassenger');
+    $classId = $request->input('class');
+
+    if (!$departureAirport || !$arrivalAirport || !$departureDate || !$arrivalDate || !$numberOfPassengers || !$classId) {
+      // Redirect back to the form page with an error message
+      return redirect()->back()->with('error', 'Please fill in all fields');
+    }
+
     $flights = Flight::where('from_airport_id', $request['departureAirport'])
     ->where('to_airport_id', $request['arrivalAirport'])
     ->whereDate('departure_date', '=', $request['departureDate'])
@@ -28,25 +40,17 @@ class BookingController extends Controller
     $classId = $request->class;
     $numberOfPassengers = $request->numberPassenger;
 
-    // $flights = Flight::query();
+    // $departureAirport = $request->input('departureAirport');
+    // $arrivalAirport = $request->input('arrivalAirport');
+    // $departureDate = $request->input('departureDate');
+    // $arrivalDate = $request->input('arrivalDate');
+    // $numberOfPassengers = $request->input('numberPassenger');
+    // $classId = $request->input('class');
 
-    // if ($request->has('departureAirport')) {
-    //   $flights->where('from_airport_id', $request->departureAirport);
-    //   // dd($flights->get());
+    // if (!$departureAirport || !$arrivalAirport || !$departureDate || !$numberOfPassengers || !$classId) {
+    //   Alert::error('Error', 'Please fill all fields');
+    //   return redirect()->back();
     // }
-
-    // // dd(count($flights->get()));
-
-    // // if ($request->has('arrivalAirport')) {
-    // //   $flights->where('to_airport_id', $request->arrivalAirport);
-    // // }
-
-    // // if ($request->has('departureDate')) {
-    // //   $flights->whereDate('departure_date', '=', $request->departureDate);
-    // // }
-
-    // $flights->get();
-
 
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);

@@ -40,7 +40,7 @@ class Form extends Component
 
     $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => 'success', 'message' => 'airport updated successfully!']);
 
-    return redirect('airport');
+    return redirect('dashboard/airport');
   }
 
   public function render()

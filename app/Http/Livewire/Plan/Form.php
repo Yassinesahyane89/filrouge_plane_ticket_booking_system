@@ -73,7 +73,7 @@ class Form extends Component
 
     $this->dispatchBrowserEvent('toastr', ['type' => 'success', 'title' => 'success', 'message' => 'plan updated successfully!']);
 
-    return redirect('plan');
+    return redirect('dashboard/plan');
   }
 
   public function getCabinsByIndex($index)
