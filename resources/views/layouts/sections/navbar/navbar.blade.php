@@ -16,9 +16,7 @@ $navbarDetached = ($navbarDetached ?? '');
       @if(isset($navbarFull))
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
         <a href="{{url('/')}}" class="app-brand-link gap-2">
-          <span class="app-brand-logo demo">
-            @include('_partials.macros',["height"=>20])
-          </span>
+          <img src="{{asset('assets/img/logo.png')}}" alt="" style="width: 33%; background-color: #7367f0; border-radius: 20px;">
           <span class="app-brand-text demo menu-text fw-bold">{{config('variables.templateName')}}</span>
         </a>
       </div>
@@ -88,24 +86,6 @@ $navbarDetached = ($navbarDetached ?? '');
                   <i class="ti ti-settings me-2 ti-sm"></i>
                   <span class="align-middle">Settings</span>
                 </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);">
-                  <span class="d-flex align-items-center align-middle">
-                    <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                    <span class="flex-grow-1 align-middle">Billing</span>
-                    <span class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20">2</span>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
-              <lI>
-                <h6 class="dropdown-header">Switch Teams</h6>
-              </lI>
-              <li>
-                <div class="dropdown-divider"></div>
               </li>
               <li>
                 <div class="dropdown-divider"></div>

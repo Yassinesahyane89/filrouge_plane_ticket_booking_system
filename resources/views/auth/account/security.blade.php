@@ -28,7 +28,6 @@
     <script src="{{ asset('assets/js/pages-account-settings-security.js') }}"></script>
     <script src="{{ asset('assets/js/modal-enable-otp.js') }}"></script>
     <script src="{{ asset('assets/js/modal-two-factor-auth.js') }}"></script>
-
 @endsection
 
 @section('content')
@@ -43,12 +42,6 @@
                             class="ti-xs ti ti-users me-1"></i> Account</a></li>
                 <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
                             class="ti-xs ti ti-lock me-1"></i> Security</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('pages/account-settings-billing') }}"><i
-                            class="ti-xs ti ti-file-description me-1"></i> Billing & Plans</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('pages/account-settings-notifications') }}"><i
-                            class="ti-xs ti ti-bell me-1"></i> Notifications</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('pages/account-settings-connections') }}"><i
-                            class="ti-xs ti ti-link me-1"></i> Connections</a></li>
             </ul>
             <!-- Change Password -->
             <div class="card mb-4">
@@ -111,83 +104,6 @@
                 </div>
             </div>
             <!--/ Change Password -->
-
-            <!-- two-step verification -->
-            <div class="card">
-                <div class="card-header border-bottom">
-                    <h4 class="card-title">Two-step verification</h4>
-                </div>
-                <div class="card-body my-2 py-25">
-                    @if (session('status') == 'two-factor-authentication-disabled')
-                        <div class="alert alert-success" role="alert">
-                            <div class="alert-body"><strong>Good Morning!</strong> Two factor authentication has been
-                                disabled.</div>
-                        </div>
-                    @endif
-
-                    @if (session('status') == 'two-factor-authentication-enabled')
-                        <div class="mb-4 font-medium text-sm">
-                            Please finish configuring two factor authentication below.
-                        </div>
-                    @endif
-
-                    @if (session('status') == 'two-factor-authentication-confirmed')
-                        <div class="mb-4 font-medium text-sm">
-                            Two factor authentication confirmed and enabled successfully.
-                        </div>
-                    @endif
-
-                    @if (!auth()->user()->two_factor_secret)
-                        <p class="fw-bolder">Two factor authentication is not enabled yet. </p>
-                    @endif
-
-                    <p>
-                        Two-factor authentication adds an additional layer of security to your account by requiring <br />
-                        more than just a password to log in. Learn more.
-                    </p>
-
-
-                    @if (auth()->user()->two_factor_secret)
-
-                      @if (auth()->user()->two_factor_confirmed_at == null)
-                        @include('_partials/_modals/modal-two-factor-auth')
-                        <p class="fw-bolder">Please finish configuring two factor authentication below.</p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#twoFactorAuthOne"> Show </button>
-                      @else
-                        <p class="fw-bolder">
-                          Two factor authentication confirmed and enabled successfully
-                        </p>
-                        <form method="POST" action="{{ route('two-factor.disable') }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-primary">
-                                Disable two-factor authentication
-                            </button>
-                        </form>
-
-                        
-                      @endif
-
-                    @else
-                        <form method="POST" action="{{ route('two-factor.enable') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">
-                                Enable two-factor authentication
-                            </button>
-                        </form>
-                    @endif
-                </div>
-            </div>
-            <!-- / two-step verification -->
-
-
-
-
-
-
-
-
         </div>
     </div>
-
 @endsection

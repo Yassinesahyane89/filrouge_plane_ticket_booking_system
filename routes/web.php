@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\BookingDetailController;
 use App\Http\Controllers\CabinController;
@@ -9,11 +10,14 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\flightlistController;
+use App\Http\Controllers\pages\HomePage;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\RolePermissionsController;
 use App\Http\Controllers\SearchFlightController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -28,7 +32,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::redirect('/', '/login', 301)->name('index');
+// Route::redirect('/', '/login', 301)->name('index');
 
 Route::get('/bookingdetails', function () {
   return view('content.mywebsite.booking-details');
@@ -40,13 +44,46 @@ Route::get('/payment', function () {
   return view('content.mywebsite.payment');
 })->name('payment');
 
-// Route::prefix('country')->middleware('auth')->group(function () {
-//   Route::get('/', [CountryController::class, 'index'])->name('country.index');
-//   Route::get('create', [CountryController::class, 'create'])->name('country.create');
-//   Route::get('edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
-//   Route::get('delete/{id}', [CountryController::class, 'delete'])->name('country.delete');
-//   Route::get('chnage/status/{id}', [CountryController::class, 'change_status'])->name('country.change.status');
-// });
+/**
+ * home
+ */
+
+Route::get('home', [HomePage::class, 'index'])->middleware('auth')->name('home');
+
+/**
+ * account
+ */
+
+Route::group(['controller' => AccountController::class, 'prefix' => 'account'], function () {
+  Route::get('settings', 'account')->name('account.settings');
+  Route::post('account/image', 'account_image')->name('account.settings.image');
+  Route::get('settings/security', 'security')->name('account.settings.security');
+});
+
+/**
+ * user
+ */
+
+Route::group(['controller' => UserController::class, 'prefix' => 'user'], function () {
+  Route::get('/', 'index')->name('user.index');
+  Route::get('create', 'create')->name('user.create');
+  Route::get('edit/{id}', 'edit')->name('user.edit');
+  Route::get('delete/{id}', 'delete')->name('user.delete');
+  Route::get('chnage/status/{id}', 'change_status')->name('user.change.status');
+});
+
+/**
+ * role
+ */
+
+Route::group(['controller' => RolePermissionsController::class, 'prefix' => 'role'], function () {
+  Route::get('/', 'index')->name('role.index');
+  Route::get('save', 'save')->name('role.save');
+});
+
+/**
+ * country
+ */
 
 Route::group(['controller' => CountryController::class, 'prefix' => 'country'], function () {
   Route::get('/','index')->name('country.index');
@@ -57,13 +94,9 @@ Route::group(['controller' => CountryController::class, 'prefix' => 'country'], 
 });
 
 
-// Route::prefix('city')->middleware('auth')->group(function () {
-//   Route::get('/', [CityController::class, 'index'])->name('city.index');
-//   Route::get('create', [CityController::class, 'create'])->name('city.create');
-//   Route::get('edit/{id}', [CityController::class, 'edit'])->name('city.edit');
-//   Route::get('delete/{id}', [CityController::class, 'delete'])->name('city.delete');
-//   Route::get('chnage/status/{id}', [CityController::class, 'change_status'])->name('city.change.status');
-// });
+/**
+ * city
+ */
 
 Route::group(['controller' => CityController::class, 'prefix' => 'city'], function () {
   Route::get('/', 'index')->name('city.index');
@@ -73,13 +106,10 @@ Route::group(['controller' => CityController::class, 'prefix' => 'city'], functi
   Route::get('chnage/status/{id}', 'change_status')->name('city.change.status');
 });
 
-// Route::prefix('airport')->middleware('auth')->group(function () {
-//   Route::get('/', [AirportController::class, 'index'])->name('airport.index');
-//   Route::get('create', [AirportController::class, 'create'])->name('airport.create');
-//   Route::get('edit/{id}', [AirportController::class, 'edit'])->name('airport.edit');
-//   Route::get('delete/{id}', [AirportController::class, 'delete'])->name('airport.delete');
-//   Route::get('chnage/status/{id}', [AirportController::class, 'change_status'])->name('airport.change.status');
-// });
+
+/**
+ * airport
+ */
 
 Route::group(['controller' => AirportController::class, 'prefix' => 'airport'], function () {
   Route::get('/', 'index')->name('airport.index');
@@ -90,13 +120,9 @@ Route::group(['controller' => AirportController::class, 'prefix' => 'airport'], 
 });
 
 
-// Route::prefix('cabin')->middleware('auth')->group(function () {
-//   Route::get('/', [CabinController::class, 'index'])->name('cabin.index');
-//   Route::get('create', [CabinController::class, 'create'])->name('cabin.create');
-//   Route::get('edit/{id}', [CabinController::class, 'edit'])->name('cabin.edit');
-//   Route::get('delete/{id}', [CabinController::class, 'delete'])->name('cabin.delete');
-//   Route::get('chnage/status/{id}', [CabinController::class, 'change_status'])->name('cabin.change.status');
-// });
+/**
+ * cabin
+ */
 
 Route::group(['controller' => CabinController::class, 'prefix' => 'cabin'], function () {
   Route::get('/', 'index')->name('cabin.index');
@@ -106,13 +132,10 @@ Route::group(['controller' => CabinController::class, 'prefix' => 'cabin'], func
   Route::get('chnage/status/{id}', 'change_status')->name('cabin.change.status');
 });
 
-// Route::prefix('seat')->middleware('auth')->group(function () {
-//   Route::get('/', [SeatController::class, 'index'])->name('seat.index');
-//   Route::get('create', [SeatController::class, 'create'])->name('seat.create');
-//   Route::get('edit/{id}', [SeatController::class, 'edit'])->name('seat.edit');
-//   Route::get('delete/{id}', [SeatController::class, 'delete'])->name('seat.delete');
-//   Route::get('chnage/status/{id}', [SeatController::class, 'change_status'])->name('seat.change.status');
-// });
+
+/**
+ * seat
+ */
 
 Route::group(['controller' => SeatController::class, 'prefix' => 'seat'], function () {
   Route::get('/', 'index')->name('seat.index');
@@ -122,13 +145,11 @@ Route::group(['controller' => SeatController::class, 'prefix' => 'seat'], functi
   Route::get('chnage/status/{id}', 'change_status')->name('seat.change.status');
 });
 
-// Route::prefix('plan')->middleware('auth')->group(function () {
-//   Route::get('/', [PlanController::class, 'index'])->name('plan.index');
-//   Route::get('create', [PlanController::class, 'create'])->name('plan.create');
-//   Route::get('edit/{id}', [PlanController::class, 'edit'])->name('plan.edit');
-//   Route::get('delete/{id}', [PlanController::class, 'delete'])->name('plan.delete');
-//   Route::get('chnage/status/{id}', [PlanController::class, 'change_status'])->name('plan.change.status');
-// });
+
+/**
+ * plan
+ */
+
 
 Route::group(['controller' => PlanController::class, 'prefix' => 'plan'], function () {
   Route::get('/', 'index')->name('plan.index');
@@ -138,13 +159,10 @@ Route::group(['controller' => PlanController::class, 'prefix' => 'plan'], functi
   Route::get('chnage/status/{id}', 'change_status')->name('plan.change.status');
 });
 
-// Route::prefix('flight')->middleware('auth')->group(function () {
-//   Route::get('/', [FlightController::class, 'index'])->name('flight.index');
-//   Route::get('create', [FlightController::class, 'create'])->name('flight.create');
-//   Route::get('edit/{id}', [FlightController::class, 'edit'])->name('flight.edit');
-//   Route::get('delete/{id}', [FlightController::class, 'delete'])->name('flight.delete');
-//   Route::get('chnage/status/{id}', [FlightController::class, 'change_status'])->name('flight.change.status');
-// });
+
+/**
+ * flight
+ */
 
 Route::group(['controller' => FlightController::class, 'prefix' => 'flight'], function () {
   Route::get('/', 'index')->name('flight.index');
@@ -154,13 +172,10 @@ Route::group(['controller' => FlightController::class, 'prefix' => 'flight'], fu
   Route::get('chnage/status/{id}', 'change_status')->name('flight.change.status');
 });
 
-// Route::prefix('passenger')->middleware('auth')->group(function () {
-//   Route::get('/', [PassengerController::class, 'index'])->name('passenger.index');
-//   Route::get('create', [PassengerController::class, 'create'])->name('passenger.create');
-//   Route::get('edit/{id}', [PassengerController::class, 'edit'])->name('passenger.edit');
-//   Route::get('delete/{id}', [PassengerController::class, 'delete'])->name('passenger.delete');
-//   Route::get('chnage/status/{id}', [PassengerController::class, 'change_status'])->name('passenger.change.status');
-// });
+
+/**
+ * passenger
+ */
 
 Route::group(['controller' => PassengerController::class, 'prefix' => 'passenger'], function () {
   Route::get('/', 'index')->name('passenger.index');
@@ -170,13 +185,9 @@ Route::group(['controller' => PassengerController::class, 'prefix' => 'passenger
   Route::get('chnage/status/{id}', 'change_status')->name('passenger.change.status');
 });
 
-// Route::prefix('ticket')->middleware('auth')->group(function () {
-//   Route::get('/', [TicketController::class, 'index'])->name('ticket.index');
-//   Route::get('create', [TicketController::class, 'create'])->name('ticket.create');
-//   Route::get('edit/{id}', [TicketController::class, 'edit'])->name('ticket.edit');
-//   Route::get('delete/{id}', [TicketController::class, 'delete'])->name('ticket.delete');
-//   Route::get('chnage/status/{id}', [TicketController::class, 'change_status'])->name('ticket.change.status');
-// });
+/**
+ * ticket
+ */
 
 Route::group(['controller' => TicketController::class, 'prefix' => 'ticket'], function () {
   Route::get('/', 'index')->name('ticket.index');
@@ -186,10 +197,9 @@ Route::group(['controller' => TicketController::class, 'prefix' => 'ticket'], fu
   Route::get('chnage/status/{id}', 'change_status')->name('ticket.change.status');
 });
 
-Route::prefix('contact')->group(function () {
-  Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-  Route::post('store', [ContactController::class, 'store'])->name('contact.store');
-});
+/**
+ * contact
+ */
 
 Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], function () {
   Route::get('', 'index')->name('contact.index');
@@ -197,10 +207,10 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
 });
 
 Route::get('dashboard/contact', [DashboardContactController::class,'index'])->name('dashboard.contact.index');
+
+
+
 Route::get('landing', [SearchFlightController::class,'index'])-> name('landing');
-
-
 Route::post('flightlist', [flightlistController::class, 'index'])->name('flightlist.index');
-
 Route::post('bookingdetail', [BookingDetailController::class, 'index'])->name('bookingdetail.index');
 Route::post('bookingdetail/store', [BookingDetailController::class, 'store'])->name('bookingdetail.store');
