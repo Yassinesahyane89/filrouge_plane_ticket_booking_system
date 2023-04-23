@@ -34,7 +34,7 @@
             <!-- booking-details-area -->
             <section class="booking-details-area">
                 <div class="container">
-                  <form action="{{ route('bookingdetail.store') }}"  method="POST">
+                  <form action="{{ route('storeInformationPassenger.store') }}"  method="POST">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">

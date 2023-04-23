@@ -29,7 +29,7 @@
                                                 <p>{{ $flight->toAirport->name }}</p>
                                             </div>
                                         </div>
-                                        <form class="flight-price" action="{{ route('bookingdetail.index') }}"  method="POST">
+                                        <form class="flight-price" action="{{ route('booking.bookingdetail') }}"  method="POST">
                                           @csrf
                                             <input type="hidden" name="flight_id" value="{{ $flight->id }}">
                                             <input type="hidden" name="numberOfPassengers" value="{{ $numberOfPassengers }}">

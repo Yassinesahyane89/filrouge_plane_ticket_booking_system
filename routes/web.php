@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingDetailController;
 use App\Http\Controllers\dashboard\AccountController;
 use App\Http\Controllers\dashboard\AirportController;
@@ -15,8 +16,6 @@ use App\Http\Controllers\dashboard\RolePermissionsController;
 use App\Http\Controllers\dashboard\SeatController;
 use App\Http\Controllers\dashboard\TicketController;
 use App\Http\Controllers\dashboard\UserController;
-use App\Http\Controllers\flightlistController;
-use App\Http\Controllers\SearchFlightController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -201,8 +200,12 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
  * landing page
  */
 
-
-Route::get('/', [SearchFlightController::class, 'index'])->name('landing');
+  Route::group(['controller' => BookingController::class, 'prefix' => 'booking'], function () {
+    Route::get('/',  'index')->name('landing');
+    Route::post('searchFlight', 'searchFlight')->name('booking.searchFlight');
+    Route::post('bookingdetail', 'bookingdetail')->name('booking.bookingdetail');
+    Route::post('InformationPassenger/store', 'storeInformationPassenger')->name('storeInformationPassenger.store');
+  });
 
 /**
  * contact
@@ -225,8 +228,3 @@ Route::get('/bookinglist', function () {
 Route::get('/payment', function () {
   return view('content.pages.payment');
 })->name('payment');
-
-Route::get('/', [SearchFlightController::class,'index'])-> name('landing');
-Route::post('flightlist', [flightlistController::class, 'index'])->name('flightlist.index');
-Route::post('bookingdetail', [BookingDetailController::class, 'index'])->name('bookingdetail.index');
-Route::post('bookingdetail/store', [BookingDetailController::class, 'store'])->name('bookingdetail.store');
