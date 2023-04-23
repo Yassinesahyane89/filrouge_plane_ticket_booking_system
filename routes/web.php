@@ -209,7 +209,7 @@ Route::get('dashboard/contact', [ContactController::class,'index'])->name('dashb
 
 
 
-Route::get('landing', [SearchFlightController::class,'index'])-> name('landing');
+Route::get('/', [SearchFlightController::class,'index'])-> name('landing');
 Route::post('flightlist', [flightlistController::class, 'index'])->name('flightlist.index');
 Route::post('bookingdetail', [BookingDetailController::class, 'index'])->name('bookingdetail.index');
 Route::post('bookingdetail/store', [BookingDetailController::class, 'store'])->name('bookingdetail.store');
