@@ -1,4 +1,4 @@
-@extends('content.mywebsite.layouts.head')
+@extends('content.pages.layouts.head')
 <!-- header-area -->
         <header>
             <div id="sticky-header" class="menu-area">

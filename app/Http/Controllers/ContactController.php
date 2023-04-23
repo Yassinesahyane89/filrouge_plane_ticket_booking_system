@@ -11,7 +11,7 @@ class ContactController extends Controller
   public function index()
   {
     // get all the contacts
-    return view('content.mywebsite.contact');
+    return view('content.pages.contact');
   }
 
   public function store(ContactRequest $request)

@@ -22,7 +22,7 @@ class BookingDetailController extends Controller
       ->flightFares[0]['fare'];
 
     // dd($price);
-    return view('content.mywebsite.booking-details', ['flight' => $flight, 'numberOfPassengers' => $numberOfPassengers, 'class' => $class, 'price' => $price]);
+    return view('content.pages.booking-details', ['flight' => $flight, 'numberOfPassengers' => $numberOfPassengers, 'class' => $class, 'price' => $price]);
   }
   public function store(Request $request)
   {

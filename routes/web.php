@@ -31,17 +31,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// Route::redirect('/', '/login', 301)->name('index');
 
-Route::get('/bookingdetails', function () {
-  return view('content.mywebsite.booking-details');
-})->name('bookingdetails');
-Route::get('/bookinglist', function () {
-  return view('content.mywebsite.booking-list');
-})->name('bookinglist');
-Route::get('/payment', function () {
-  return view('content.mywebsite.payment');
-})->name('payment');
+
+/* ======================================== Dashboard ======================================== */
+Route::redirect('/', '/login', 301)->name('index');
 
 /**
  * home
@@ -200,14 +193,38 @@ Route::group(['controller' => TicketController::class, 'prefix' => 'dashboard/ti
  * contact
  */
 
+Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dashboard.contact.index');
+
+/* ======================================== My Pages ======================================== */
+
+/**
+ * landing page
+ */
+
+
+Route::get('/', [SearchFlightController::class, 'index'])->name('landing');
+
+/**
+ * contact
+ */
+
 Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], function () {
   Route::get('', 'index')->name('contact.index');
   Route::post('store', 'store')->name('contact.store');
 });
 
-Route::get('dashboard/contact', [ContactController::class,'index'])->name('dashboard.contact.index');
 
 
+
+Route::get('/bookingdetails', function () {
+  return view('content.pages.booking-details');
+})->name('bookingdetails');
+Route::get('/bookinglist', function () {
+  return view('content.pages.booking-list');
+})->name('bookinglist');
+Route::get('/payment', function () {
+  return view('content.pages.payment');
+})->name('payment');
 
 Route::get('/', [SearchFlightController::class,'index'])-> name('landing');
 Route::post('flightlist', [flightlistController::class, 'index'])->name('flightlist.index');

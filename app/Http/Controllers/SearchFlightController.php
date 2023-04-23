@@ -12,6 +12,6 @@ class SearchFlightController extends Controller
     {
         $airports = Airport::all();
         $class = Cabin::all();
-        return view('content.mywebsite.landing-page', ['airports' => $airports, 'classes' => $class]);
+        return view('content.pages.landing-page', ['airports' => $airports, 'classes' => $class]);
     }
 }

@@ -1,6 +1,6 @@
 
-@extends('content.mywebsite.layouts.footer')
-@extends('content.mywebsite.layouts.header')
+@extends('content.pages.layouts.footer')
+@extends('content.pages.layouts.header')
 @section('content')
 
             <!-- customer-details-area -->

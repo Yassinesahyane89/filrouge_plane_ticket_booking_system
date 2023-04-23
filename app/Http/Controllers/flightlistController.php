@@ -42,7 +42,7 @@ class flightlistController extends Controller
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);
 
-    return view('content.mywebsite.booking-list', [
+    return view('content.pages.booking-list', [
       'flights' => $flights,
       'numberOfPassengers' => $numberOfPassengers,
       'classId' => $classId,
