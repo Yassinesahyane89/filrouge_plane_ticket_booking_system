@@ -1,6 +1,7 @@
 
 @extends('content.pages.layouts.footer')
 @extends('content.pages.layouts.header')
+@include('sweetalert::alert')
 @section('content')
             <!-- booking-area -->
             <div class="booking-area position-relative">

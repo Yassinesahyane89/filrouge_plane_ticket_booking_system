@@ -204,7 +204,7 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
     Route::get('/',  'index')->name('landing');
     Route::post('searchFlight', 'searchFlight')->name('booking.searchFlight');
     Route::post('bookingdetail', 'bookingdetail')->name('booking.bookingdetail');
-    Route::post('InformationPassenger/store', 'storeInformationPassenger')->name('storeInformationPassenger.store');
+    Route::post('storeInformationPassenger', 'storeInformationPassenger')->name('booking.storeInformationPassenger');
   });
 
 /**
@@ -219,12 +219,12 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
 
 
 
-Route::get('/bookingdetails', function () {
-  return view('content.pages.booking-details');
-})->name('bookingdetails');
-Route::get('/bookinglist', function () {
-  return view('content.pages.booking-list');
-})->name('bookinglist');
-Route::get('/payment', function () {
-  return view('content.pages.payment');
-})->name('payment');
+// Route::get('/bookingdetails', function () {
+//   return view('content.pages.booking-details');
+// })->name('bookingdetails');
+// Route::get('/bookinglist', function () {
+//   return view('content.pages.booking-list');
+// })->name('bookinglist');
+// Route::get('/payment', function () {
+//   return view('content.pages.payment');
+// })->name('payment');

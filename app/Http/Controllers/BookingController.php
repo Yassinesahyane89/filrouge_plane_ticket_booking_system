@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FlightlistRequest;
+use App\Http\Requests\PassengerInformationrequest;
 use App\Models\Airport;
 use App\Models\Cabin;
 use App\Models\Flight;
@@ -9,6 +11,7 @@ use App\Models\Passenger;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Termwind\Components\Dd;
 
 class BookingController extends Controller
 {
@@ -19,19 +22,8 @@ class BookingController extends Controller
     return view('content.pages.landing-page', ['airports' => $airports, 'classes' => $class]);
   }
 
-  public function searchFlight(Request $request)
+  public function searchFlight(FlightlistRequest $request)
   {
-    $departureAirport = $request->input('departureAirport');
-    $arrivalAirport = $request->input('arrivalAirport');
-    $departureDate = $request->input('departureDate');
-    $arrivalDate = $request->input('arrivalDate');
-    $numberOfPassengers = $request->input('numberPassenger');
-    $classId = $request->input('class');
-
-    if (!$departureAirport || !$arrivalAirport || !$departureDate || !$arrivalDate || !$numberOfPassengers || !$classId) {
-      // Redirect back to the form page with an error message
-      return redirect()->back()->with('error', 'Please fill in all fields');
-    }
 
     $flights = Flight::where('from_airport_id', $request['departureAirport'])
     ->where('to_airport_id', $request['arrivalAirport'])
@@ -39,18 +31,6 @@ class BookingController extends Controller
     ->get();
     $classId = $request->class;
     $numberOfPassengers = $request->numberPassenger;
-
-    // $departureAirport = $request->input('departureAirport');
-    // $arrivalAirport = $request->input('arrivalAirport');
-    // $departureDate = $request->input('departureDate');
-    // $arrivalDate = $request->input('arrivalDate');
-    // $numberOfPassengers = $request->input('numberPassenger');
-    // $classId = $request->input('class');
-
-    // if (!$departureAirport || !$arrivalAirport || !$departureDate || !$numberOfPassengers || !$classId) {
-    //   Alert::error('Error', 'Please fill all fields');
-    //   return redirect()->back();
-    // }
 
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);
@@ -96,13 +76,16 @@ class BookingController extends Controller
   }
   public function storeInformationPassenger(Request $request)
   {
-    for ($i = 0; $i < count($request['firstname']); $i++) {
-      Passenger::create([
-        'first_name' => $request['firstname'][$i],
-        'last_name' => $request['lastname'][$i],
-        'phone_number' => $request['mobileNumber'][$i],
-        'email' => $request['email'][$i],
-      ]);
-    }
+    // dd($request->all());
+    // for ($i = 0; $i < count($request['firstname']); $i++) {
+    //   Passenger::create([
+    //     'first_name' => $request['firstname'][$i],
+    //     'last_name' => $request['lastname'][$i],
+    //     'phone_number' => $request['phone'][$i],
+    //     'email' => $request['email'][$i],
+    //   ]);
+    // }
+    return view('content.pages.payment', ['totaleCost' => $request['totalCost']]);
+
   }
 }

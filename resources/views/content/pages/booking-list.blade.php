@@ -35,7 +35,7 @@
                                             <input type="hidden" name="numberOfPassengers" value="{{ $numberOfPassengers }}">
                                             <input type="hidden" name="classId" value="{{ $classId }}">
                                             <h4 class="title">US$ {{ $flight->flightFares()->where('cabin_id', $classId)->first()->fare }}</h4>
-                                            <button class="btn">Select <i class="flaticon-flight-1"></i></button>
+                                            <button class="btn" type="submit">Select <i class="flaticon-flight-1"></i></button>
                                         </form>
                                     </div>
                                 </div>

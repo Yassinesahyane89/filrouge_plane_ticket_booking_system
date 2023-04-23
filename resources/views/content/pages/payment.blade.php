@@ -46,74 +46,83 @@
                                 <li style="width: 50%"><img src="{{ asset('assets/img/cartes-min.png') }}" alt=""></li>
                               </ul>
                             </div>
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="firstname">Nom du porteur de la carte</label>
-                                                    <input type="text" id="firstname" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="firstname">Numéro de carte de paiement</label>
-                                                    <input type="text" id="firstname" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="firstname">Date d'expiration</label>
-                                                    <ul class="row">
-                                                        <li class="col-md-6">
-                                                            <div class="form-grp">
-                                                                <label for=""></label>
-                                                                <div class="form">
-                                                                    <select id="title" name="select" class="form-select" aria-label="Default select example">
-                                                                        <option value="">Mr.</option>
-                                                                        <option>Mrs.</option>
-                                                                        <option>Others..</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="form-grp">
-                                                                <label for=""></label>
-                                                                <div class="form">
-                                                                    <select id="title" name="select" class="form-select" aria-label="Default select example">
-                                                                        <option value="">Mr.</option>
-                                                                        <option>Mrs.</option>
-                                                                        <option>Others..</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                              <form action="#">
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="form-grp">
+                                              <div class="form">
+                                                  <label for="cardholder-name">Nom du porteur de la carte</label>
+                                                  <input type="text" id="cardholder-name" >
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="form-grp">
+                                              <div class="form">
+                                                  <label for="card-number">Numéro de carte de paiement</label>
+                                                  <input type="text" id="card-number" >
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="form-grp">
+                                              <div class="form">
+                                                  <label for="expiry-date">Date d'expiration</label>
+                                                  <ul class="row">
+                                                      <li class="col-md-6">
+                                                          <div class="form-grp">
+                                                              <div class="form">
+                                                                  <select id="expiry-month" name="expiry-month" class="form-select" aria-label="Default select example">
+                                                                      <option value="">Mois</option>
+                                                                      <option value="01">01 - Janvier</option>
+                                                                      <option value="02">02 - Février</option>
+                                                                      <option value="03">03 - Mars</option>
+                                                                      <option value="04">04 - Avril</option>
+                                                                      <option value="05">05 - Mai</option>
+                                                                      <option value="06">06 - Juin</option>
+                                                                      <option value="07">07 - Juillet</option>
+                                                                      <option value="08">08 - Août</option>
+                                                                      <option value="09">09 - Septembre</option>
+                                                                      <option value="10">10 - Octobre</option>
+                                                                      <option value="11">11 - Novembre</option>
+                                                                      <option value="12">12 - Décembre</option>
+                                                                  </select>
+                                                              </div>
+                                                          </div>
+                                                      </li>
+                                                      <li class="col-md-6">
+                                                          <div class="form-grp">
+                                                              <div class="form">
+                                                                  <select id="expiry-year" name="expiry-year" class="form-select" aria-label="Default select example">
+                                                                      <option value="">Année</option>
+                                                                      @for ($i = date('Y'); $i <= date('Y') + 10; $i++)
+                                                                          <option value="{{ $i }}">{{ $i }}</option>
+                                                                      @endfor
+                                                                  </select>
+                                                              </div>
+                                                          </div>
+                                                      </li>
+                                                  </ul>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-grp">
-                                                <div class="form">
-                                                    <label for="firstname">Code de vérification</label>
-                                                    <input type="text" id="firstname" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <div class="form-grp">
+                                              <div class="form">
+                                                  <label for="cvv">Code de vérification</label>
+                                                  <input type="text" id="cvv" >
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form>
                             </div>
                         </div>
                         <div class="leftbare">
@@ -127,7 +136,7 @@
                                         </ul>
                                         <ul>
                                             <li class="title">Montant</li>
-                                            <li>60 MAD</li>
+                                            <li>{{$totaleCost}} MAD</li>
                                         </ul>
                                     </div>
                                 </div>

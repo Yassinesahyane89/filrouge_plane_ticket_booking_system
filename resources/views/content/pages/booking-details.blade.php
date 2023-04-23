@@ -34,10 +34,11 @@
             <!-- booking-details-area -->
             <section class="booking-details-area">
                 <div class="container">
-                  <form action="{{ route('storeInformationPassenger.store') }}"  method="POST">
+                  <form action="{{ route('booking.storeInformationPassenger') }}"  method="POST" id="Passengerdetail">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
+                          <h2>Informations for all Passenger ?</h2>
                           @for ($i = 1; $i <= $numberOfPassengers; $i++)
                             <div style="margin-bottom: 20px;">
                                 <div class="primary-contact">
@@ -68,7 +69,7 @@
                                           <div class="col-md-6">
                                               <div class="form-grp">
                                                   <div class="form">
-                                                      <input type="number" placeholder="Mobile Number" name="mobileNumber[]">
+                                                      <input type="number" placeholder="Mobile Number" name="phone[]">
                                                   </div>
                                               </div>
                                           </div>
@@ -102,8 +103,9 @@
                                             <li>Adult x 1 <span>{{ $numberOfPassengers}}</span></li>
                                             <li>price x 1 <span>{{ $price }}</span></li>
                                             <li>Total Payable<span>{{ $numberOfPassengers * $price}}.00</span></li>
+                                            <input type="hidden" value="{{ $numberOfPassengers * $price}}" name="totalCost">
                                         </ul>
-                                        <button class="btn">Pay now</button>
+                                        <button class="btn" type="submit">Pay now</button>
                                     </div>
                                 </div>
                             </aside>
