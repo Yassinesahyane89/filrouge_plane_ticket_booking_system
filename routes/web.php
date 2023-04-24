@@ -16,6 +16,7 @@ use App\Http\Controllers\dashboard\RolePermissionsController;
 use App\Http\Controllers\dashboard\SeatController;
 use App\Http\Controllers\dashboard\TicketController;
 use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -214,6 +215,15 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
 Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], function () {
   Route::get('', 'index')->name('contact.index');
   Route::post('store', 'store')->name('contact.store');
+});
+
+/**
+ * payment
+ */
+
+Route::group(['controller' => PaymentController::class, 'prefix' => 'payment'], function () {
+  Route::get('', 'index')->name('payment.index');
+  Route::post('store', 'store')->name('payment.store');
 });
 
 

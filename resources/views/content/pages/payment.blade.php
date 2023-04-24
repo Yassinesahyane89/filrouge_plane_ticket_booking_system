@@ -34,6 +34,8 @@
             <!-- payment-details-area -->
             <section class="payment-details-area">
                 <div  style="width: 90%; margin: auto;">
+                  <form action="{{ route('payment.store') }}" method="POST" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                    @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
                             <div class="primary-contact">
@@ -46,13 +48,19 @@
                                 <li style="width: 50%"><img src="{{ asset('assets/img/cartes-min.png') }}" alt=""></li>
                               </ul>
                             </div>
-                              <form action="#">
+                              @if (Session::has('success'))
+                                  <div class="alert alert-success text-center">
+                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                      <p>{{ Session::get('success') }}</p>
+                                  </div>
+                              @endif
+                              <div>
                                   <div class="row">
                                       <div class="col-12">
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="cardholder-name">Nom du porteur de la carte</label>
-                                                  <input type="text" id="cardholder-name" >
+                                                  <input type="text" id="cardholder-name"  name="cardholder-name">
                                               </div>
                                           </div>
                                       </div>
@@ -62,7 +70,7 @@
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="card-number">Numéro de carte de paiement</label>
-                                                  <input type="text" id="card-number" >
+                                                  <input type="number" id="card-number" name="card-number">
                                               </div>
                                           </div>
                                       </div>
@@ -117,12 +125,12 @@
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="cvv">Code de vérification</label>
-                                                  <input type="text" id="cvv" >
+                                                  <input type="number" id="cvv" name="cvv">
                                               </div>
                                           </div>
                                       </div>
                                   </div>
-                              </form>
+                                </div>
                             </div>
                         </div>
                         <div class="leftbare">
@@ -136,7 +144,7 @@
                                         </ul>
                                         <ul>
                                             <li class="title">Montant</li>
-                                            <li>{{$totaleCost}} MAD</li>
+                                            <li>60 MAD</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -169,6 +177,7 @@
                             </aside>
                         </div>
                     </div>
+                  </form>
                 </div>
             </section>
             <!-- payment-details-area-end -->
