@@ -83,6 +83,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
          @if ($errors->any())
           <script>
+            console.log(@json($errors->all()));
               Swal.fire({
                   icon: 'error',
                   title: 'Oops...',

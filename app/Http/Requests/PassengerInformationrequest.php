@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PassengerInformationrequest extends FormRequest
 {
@@ -22,14 +23,10 @@ class PassengerInformationrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname.*' => 'required|string',
-            'lastname.*' => 'required|string',
-            'email.*' => 'required|email',
-            'phone.*' => 'required|numeric',
-            // 'address' => 'required|string',
-            // 'passport' => 'required|string',
-            // 'passport_date' => 'required|date',
-            // 'passport_place' => 'required|string',
+            'passengers.*.firstname' => 'required|string',
+            'passengers.*.lastname' => 'required|string',
+            'passengers.*.email' => 'required|email',
+            'passengers.*.phone' => 'required|numeric',
         ];
     }
 }

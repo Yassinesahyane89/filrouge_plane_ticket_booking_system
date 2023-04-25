@@ -16,7 +16,7 @@ class Form extends Component
   {
     return [
       'airport.name' => 'required|min:6',
-      'airport.city_id' => 'required',
+      'airport.city_id' => 'required|exists:cities,id',
     ];
   }
 

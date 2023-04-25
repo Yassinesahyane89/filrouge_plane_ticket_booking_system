@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AvailableFlightController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingDetailController;
+use App\Http\Controllers\CoordinatePassenegerController;
 use App\Http\Controllers\dashboard\AccountController;
 use App\Http\Controllers\dashboard\AirportController;
 use App\Http\Controllers\dashboard\CabinController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\dashboard\SeatController;
 use App\Http\Controllers\dashboard\TicketController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SearchFlightController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -203,9 +206,23 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
 
   Route::group(['controller' => BookingController::class, 'prefix' => 'booking'], function () {
     Route::get('/',  'index')->name('landing');
-    Route::post('searchFlight', 'searchFlight')->name('booking.searchFlight');
-    Route::post('bookingdetail', 'bookingdetail')->name('booking.bookingdetail');
-    Route::post('storeInformationPassenger', 'storeInformationPassenger')->name('booking.storeInformationPassenger');
+  });
+
+/**
+ * Search flight
+ */
+
+  Route::group(['controller' => SearchFlightController::class, 'prefix' => 'flight-search'], function () {
+    Route::get('/',  'searchFlight')->name('flight-search');
+  });
+
+/**
+ * availabel flight
+ */
+
+  Route::group(['controller' => CoordinatePassenegerController::class, 'prefix' => 'availabel-flight'], function () {
+    Route::get('coordinates/{flight}', 'index')->name('availabel-flight.coordinates');
+    Route::post('storeInformationPassenger/{flight}', 'storeInformationPassenger')->name('availabel-flight.storeInformationPassenger');
   });
 
 /**

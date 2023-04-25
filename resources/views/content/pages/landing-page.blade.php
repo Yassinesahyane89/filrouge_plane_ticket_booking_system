@@ -7,8 +7,7 @@
             <div class="booking-area position-relative">
                 <div class="container">
                     <div class="bg-white p-4 rounded-3">
-                        <form  action="{{ route('booking.searchFlight') }}" method="POST" id="searchFlight">
-                            @csrf
+                        <form  action="{{ route('flight-search') }}" method="GET" id="searchFlight">
                             <div class="booking-details-wrap d-flex flex-wrap p-1">
                                 <div class="col-md-4 d-flex flex-column p-1">
                                     <div class="">

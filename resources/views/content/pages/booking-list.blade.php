@@ -29,14 +29,10 @@
                                                 <p>{{ $flight->toAirport->name }}</p>
                                             </div>
                                         </div>
-                                        <form class="flight-price" action="{{ route('booking.bookingdetail') }}"  method="POST">
-                                          @csrf
-                                            <input type="hidden" name="flight_id" value="{{ $flight->id }}">
-                                            <input type="hidden" name="numberOfPassengers" value="{{ $numberOfPassengers }}">
-                                            <input type="hidden" name="classId" value="{{ $classId }}">
-                                            <h4 class="title">US$ {{ $flight->flightFares()->where('cabin_id', $classId)->first()->fare }}</h4>
-                                            <button class="btn" type="submit">Select <i class="flaticon-flight-1"></i></button>
-                                        </form>
+                                        <a class="flight-price" href="{{ route('availabel-flight.coordinates',['flight'=>$flight->id,'class_id'=>  request()->class , 'numberPassenger' => request()->numberPassenger]) }}">
+                                            <span class="title">{{ $flight->flightFares()->where('cabin_id', request()->class)->first()->fare }}$</span>
+                                            <span class="btn" type="submit">Select <i class="flaticon-flight-1"></i></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
