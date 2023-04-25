@@ -239,7 +239,7 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
  */
 
 Route::group(['controller' => PaymentController::class, 'prefix' => 'payment'], function () {
-  Route::get('', 'index')->name('payment.index');
+  Route::get('/{flight}', 'index')->name('payment.index');
   Route::post('store', 'store')->name('payment.store');
 });
 

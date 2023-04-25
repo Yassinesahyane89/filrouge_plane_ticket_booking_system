@@ -36,18 +36,16 @@ class PaymentController extends Controller
         'cvc' => '314',
       ],
     ]);
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // dd($resp);
-    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    // dd(+$request['totalprice']);
     Stripe\Charge::create([
-      "amount" => 240 * 100,
+      "amount" => +$request['totalprice'] * 100,
       "currency" => "mad",
       "source" => $resp->id,
     ]);
-
     
-
     Session::flash('success', 'Payment successful!');
 
     return back();

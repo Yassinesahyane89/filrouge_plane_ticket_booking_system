@@ -18,19 +18,7 @@ class CoordinatePassenegerController extends Controller
 
   public function storeInformationPassenger(PassengerInformationrequest $request, $flight)
   {
-    return $request->all();
-    $passangers = [];
-    for ($i = 0; $i < count($request['firstname']); $i++) {
-      $passangers[] =  [
-        'first_name' => $request['firstname'][$i],
-        'last_name' => $request['lastname'][$i],
-        'phone_number' => $request['phone'][$i],
-        'email' => $request['email'][$i],
-      ];
-    }
-
-    session('passangers',$passangers);
-
-    return view('content.pages.payment', ['totaleCost' => $request['totalCost']]);
+    session('passangers', $request['passengers']);
+    return view('content.pages.payment', ['totalprice' => $request['totalprice'], 'price' => $request['price']]);
   }
 }

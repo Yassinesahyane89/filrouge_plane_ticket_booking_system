@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FlightlistRequest;
 use App\Models\Flight;
 use App\Models\Ticket;
+use Session;
 use Illuminate\Http\Request;
 
 class SearchFlightController extends Controller
@@ -21,6 +22,10 @@ class SearchFlightController extends Controller
 
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);
+    if(count($flights)==0){
+      Session::flash('success', 'No Flight available!');
+      return back();
+    }
 
     // session(['numberOfPassengers'=>$numberOfPassengers]);
     // session(['classId'=>$classId]);

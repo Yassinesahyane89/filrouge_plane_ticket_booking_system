@@ -34,7 +34,7 @@
             <!-- booking-details-area -->
             <section class="booking-details-area">
                 <div class="container">
-                  <form action="{{ route('availabel-flight.storeInformationPassenger',$flight->id) }}"  method="POST" id="Passengerdetail">
+                  <form action="{{ route('availabel-flight.storeInformationPassenger',$flight->id, request()->class) }}"  method="POST" id="Passengerdetail">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
@@ -102,6 +102,8 @@
                                         <ul>
                                             <li>Adult x 1 <span>{{ request()->numberPassenger }}</span></li>
                                             <li>price x 1 <span>{{ $price }}</span></li>
+                                            <input type="hidden" name="totalprice"  value="{{ request()->numberPassenger * $price }}">
+                                            <input type="hidden" name="price"  value="{{ $price }}">
                                             <li>Total Payable<span>{{ request()->numberPassenger * $price}}.00</span></li>
                                             <input type="hidden" value="{{ request()->numberPassenger * $price}}" name="totalCost">
                                         </ul>

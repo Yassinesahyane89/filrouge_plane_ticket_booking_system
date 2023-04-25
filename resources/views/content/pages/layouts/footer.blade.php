@@ -83,13 +83,21 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
          @if ($errors->any())
           <script>
-            console.log(@json($errors->all()));
               Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
                   text: '{{ $errors->first() }}',
               });
           </script>
+        @endif
+        @if (Session::has('success'))
+              <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ Session::get('success') }}',
+                });
+              </script>
         @endif
         {{-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script> --}}
         <script type="text/javascript" src="https://js.stripe.com/v3/"></script>

@@ -48,12 +48,6 @@
                                 <li style="width: 50%"><img src="{{ asset('assets/img/cartes-min.png') }}" alt=""></li>
                               </ul>
                             </div>
-                              @if (Session::has('success'))
-                                  <div class="alert alert-success text-center">
-                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                      <p>{{ Session::get('success') }}</p>
-                                  </div>
-                              @endif
                               <div>
                                   <div class="row">
                                       <div class="col-12">
@@ -61,7 +55,7 @@
                                               <div class="form">
                                                   <label for="cardholder-name">Nom du porteur de la carte</label>
                                                   <input type="text" id="cardholder-name"  name="cardholder-name">
-                                                  
+
                                               </div>
                                           </div>
                                       </div>
@@ -145,7 +139,8 @@
                                         </ul>
                                         <ul>
                                             <li class="title">Montant</li>
-                                            <li>60 MAD</li>
+                                            <li>{{ $totalprice }} MAD</li>
+                                            <input type="hidden" name="totalprice" value="{{ $totalprice }}">
                                         </ul>
                                     </div>
                                 </div>
@@ -172,7 +167,7 @@
                             <aside class="payment-sidebar" style="background-color: white; margin-top: 20px;">
                                 <div class="widget">
                                     <div class="price-summary-detail">
-                                        <button href="#" class="btn" >validation payment</button>
+                                        <button class="btn" type="submit">validation payment</button>
                                     </div>
                                 </div>
                             </aside>
