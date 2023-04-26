@@ -13,7 +13,7 @@
                                 <h2 class="title">Write a Message</h2>
                             </div>
                             <div class="contact-form">
-                                <form action="{{ route('flightlist.index') }}" method="POST">
+                                <form action="{{ route('contact.store') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">

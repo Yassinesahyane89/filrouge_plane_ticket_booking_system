@@ -1,14 +1,12 @@
 <?php
 
-use App\Http\Controllers\AvailableFlightController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\BookingDetailController;
 use App\Http\Controllers\CoordinatePassenegerController;
 use App\Http\Controllers\dashboard\AccountController;
 use App\Http\Controllers\dashboard\AirportController;
 use App\Http\Controllers\dashboard\CabinController;
 use App\Http\Controllers\dashboard\CityController;
-use App\Http\Controllers\dashboard\ContactController;
+use App\Http\Controllers\dashboard\DashboardContactController;
 use App\Http\Controllers\dashboard\CountryController;
 use App\Http\Controllers\dashboard\FlightController;
 use App\Http\Controllers\dashboard\HomePage;
@@ -20,6 +18,7 @@ use App\Http\Controllers\dashboard\TicketController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchFlightController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -196,7 +195,7 @@ Route::group(['controller' => TicketController::class, 'prefix' => 'dashboard/ti
  * contact
  */
 
-Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dashboard.contact.index');
+Route::get('dashboard/contact', [DashboardContactController::class, 'index'])->name('dashboard.contact.index');
 
 /* ======================================== My Pages ======================================== */
 
@@ -222,7 +221,7 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
 
   Route::group(['controller' => CoordinatePassenegerController::class, 'prefix' => 'availabel-flight'], function () {
     Route::get('coordinates/{flight}', 'index')->name('availabel-flight.coordinates');
-    Route::post('storeInformationPassenger/{flight}', 'storeInformationPassenger')->name('availabel-flight.storeInformationPassenger');
+    Route::post('storeInformationPassenger', 'storeInformationPassenger')->name('availabel-flight.storeInformationPassenger');
   });
 
 /**
@@ -230,7 +229,7 @@ Route::get('dashboard/contact', [ContactController::class, 'index'])->name('dash
  */
 
 Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], function () {
-  Route::get('', 'index')->name('contact.index');
+  Route::get('/', 'index')->name('contact.index');
   Route::post('store', 'store')->name('contact.store');
 });
 
@@ -239,7 +238,7 @@ Route::group(['controller' => ContactController::class, 'prefix' => 'contact'], 
  */
 
 Route::group(['controller' => PaymentController::class, 'prefix' => 'payment'], function () {
-  Route::get('/{flight}', 'index')->name('payment.index');
+  Route::get('/', 'index')->name('payment.index');
   Route::post('store', 'store')->name('payment.store');
 });
 

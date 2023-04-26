@@ -23,13 +23,11 @@ class SearchFlightController extends Controller
     $flightIds = $this->getAvailableFlightIds($flights, $classId, $numberOfPassengers);
     $flights = $flights->whereIn('id', $flightIds);
     if(count($flights)==0){
-      Session::flash('success', 'No Flight available!');
+      Session::flash('error', 'No Flight available!');
       return back();
     }
-
-    // session(['numberOfPassengers'=>$numberOfPassengers]);
-    // session(['classId'=>$classId]);
-
+    session(['numberPassenger' => $numberOfPassengers]);
+    session(['classId' => $classId]);
     return view('content.pages.booking-list', [
       'flights' => $flights,
     ]);

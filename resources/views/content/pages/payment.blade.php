@@ -34,7 +34,7 @@
             <!-- payment-details-area -->
             <section class="payment-details-area">
                 <div  style="width: 90%; margin: auto;">
-                  <form action="{{ route('payment.store') }}" method="POST" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                  <form action="{{ route('payment.store',request()->flight) }}" method="POST" class="require-validation" id="payment-form">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
@@ -54,7 +54,7 @@
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="cardholder-name">Nom du porteur de la carte</label>
-                                                  <input type="text" id="cardholder-name"  name="cardholder-name">
+                                                  <input type="text" id="cardholder-name"  name="cardholder-name" value="{{ old('cardholder-name') }}">
 
                                               </div>
                                           </div>
@@ -65,7 +65,7 @@
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="card-number">Numéro de carte de paiement</label>
-                                                  <input type="number" id="card-number" name="card-number">
+                                                  <input type="number" id="card-number" name="card-number" value="{{ old('card-number') }}">
                                               </div>
                                           </div>
                                       </div>
@@ -81,18 +81,18 @@
                                                               <div class="form">
                                                                   <select id="expiry-month" name="expiry-month" class="form-select" aria-label="Default select example">
                                                                       <option value="">Mois</option>
-                                                                      <option value="01">01 - Janvier</option>
-                                                                      <option value="02">02 - Février</option>
-                                                                      <option value="03">03 - Mars</option>
-                                                                      <option value="04">04 - Avril</option>
-                                                                      <option value="05">05 - Mai</option>
-                                                                      <option value="06">06 - Juin</option>
-                                                                      <option value="07">07 - Juillet</option>
-                                                                      <option value="08">08 - Août</option>
-                                                                      <option value="09">09 - Septembre</option>
-                                                                      <option value="10">10 - Octobre</option>
-                                                                      <option value="11">11 - Novembre</option>
-                                                                      <option value="12">12 - Décembre</option>
+                                                                      <option value="01" {{ old('expiry-month') == '01' ? 'selected' : '' }}>01 - Janvier</option>
+                                                                      <option value="02" {{ old('expiry-month') == '02' ? 'selected' : '' }}>02 - Février</option>
+                                                                      <option value="03" {{ old('expiry-month') == '03' ? 'selected' : '' }}>03 - Mars</option>
+                                                                      <option value="04" {{ old('expiry-month') == '04' ? 'selected' : '' }}>04 - Avril</option>
+                                                                      <option value="05" {{ old('expiry-month') == '05' ? 'selected' : '' }}>05 - Mai</option>
+                                                                      <option value="06" {{ old('expiry-month') == '06' ? 'selected' : '' }}>06 - Juin</option>
+                                                                      <option value="07" {{ old('expiry-month') == '07' ? 'selected' : '' }}>07 - Juillet</option>
+                                                                      <option value="08" {{ old('expiry-month') == '08' ? 'selected' : '' }}>08 - Août</option>
+                                                                      <option value="09" {{ old('expiry-month') == '09' ? 'selected' : '' }}>09 - Septembre</option>
+                                                                      <option value="10" {{ old('expiry-month') == '10' ? 'selected' : '' }}>10 - Octobre</option>
+                                                                      <option value="11" {{ old('expiry-month') == '11' ? 'selected' : '' }}>11 - Novembre</option>
+                                                                      <option value="12" {{ old('expiry-month') == '12' ? 'selected' : '' }}>12 - Décembre</option>
                                                                   </select>
                                                               </div>
                                                           </div>
@@ -103,7 +103,7 @@
                                                                   <select id="expiry-year" name="expiry-year" class="form-select" aria-label="Default select example">
                                                                       <option value="">Année</option>
                                                                       @for ($i = date('Y'); $i <= date('Y') + 10; $i++)
-                                                                          <option value="{{ $i }}">{{ $i }}</option>
+                                                                          <option value="{{ $i }}" {{ old('expiry-year') == $i ? 'selected' : '' }}>{{ $i }}</option>
                                                                       @endfor
                                                                   </select>
                                                               </div>
@@ -120,7 +120,7 @@
                                           <div class="form-grp">
                                               <div class="form">
                                                   <label for="cvv">Code de vérification</label>
-                                                  <input type="number" id="cvv" name="cvv">
+                                                  <input type="number" id="cvv" name="cvv" value="{{ old('cvv') }}">
                                               </div>
                                           </div>
                                       </div>
@@ -139,8 +139,7 @@
                                         </ul>
                                         <ul>
                                             <li class="title">Montant</li>
-                                            <li>{{ $totalprice }} MAD</li>
-                                            <input type="hidden" name="totalprice" value="{{ $totalprice }}">
+                                            <li>{{session('price')*session('numberPassenger')}} MAD</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -167,6 +166,7 @@
                             <aside class="payment-sidebar" style="background-color: white; margin-top: 20px;">
                                 <div class="widget">
                                     <div class="price-summary-detail">
+                                      {{-- <input type="hidden" name="passangers" value="{{$passangers}}"> --}}
                                         <button class="btn" type="submit">validation payment</button>
                                     </div>
                                 </div>

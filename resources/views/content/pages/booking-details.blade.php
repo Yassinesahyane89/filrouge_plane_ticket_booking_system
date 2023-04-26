@@ -34,12 +34,12 @@
             <!-- booking-details-area -->
             <section class="booking-details-area">
                 <div class="container">
-                  <form action="{{ route('availabel-flight.storeInformationPassenger',$flight->id, request()->class) }}"  method="POST" id="Passengerdetail">
+                  <form action="{{ route('availabel-flight.storeInformationPassenger') }}"  method="POST" id="Passengerdetail">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="rightBare">
                           <h2>Informations for all Passenger ?</h2>
-                          @for ($i = 0; $i < request()->numberPassenger; $i++)
+                          @for ($i = 0; $i <session('numberPassenger'); $i++)
                             <div style="margin-bottom: 20px;">
                                 <div class="primary-contact">
                                     <i class="fa-regular fa-user"></i>
@@ -100,12 +100,10 @@
                                     </div>
                                     <div class="price-summary-detail">
                                         <ul>
-                                            <li>Adult x 1 <span>{{ request()->numberPassenger }}</span></li>
+                                            <li>Adult x 1 <span>{{ session('numberPassenger') }}</span></li>
                                             <li>price x 1 <span>{{ $price }}</span></li>
-                                            <input type="hidden" name="totalprice"  value="{{ request()->numberPassenger * $price }}">
-                                            <input type="hidden" name="price"  value="{{ $price }}">
-                                            <li>Total Payable<span>{{ request()->numberPassenger * $price}}.00</span></li>
-                                            <input type="hidden" value="{{ request()->numberPassenger * $price}}" name="totalCost">
+                                            <li>Total Payable<span>{{ session('numberPassenger') * $price}}.00</span></li>
+                                            <input type="hidden" value="{{ session('numberPassenger') * $price}}" name="totalCost">
                                         </ul>
                                         <button class="btn" type="submit">Pay now</button>
                                     </div>

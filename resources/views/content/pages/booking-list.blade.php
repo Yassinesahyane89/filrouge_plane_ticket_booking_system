@@ -29,7 +29,7 @@
                                                 <p>{{ $flight->toAirport->name }}</p>
                                             </div>
                                         </div>
-                                        <a class="flight-price" href="{{ route('availabel-flight.coordinates',['flight'=>$flight->id,'class_id'=>  request()->class , 'numberPassenger' => request()->numberPassenger]) }}">
+                                        <a class="flight-price" href="{{ route('availabel-flight.coordinates',['flight'=>$flight->id]) }}">
                                             <span class="title">{{ $flight->flightFares()->where('cabin_id', request()->class)->first()->fare }}$</span>
                                             <span class="btn" type="submit">Select <i class="flaticon-flight-1"></i></span>
                                         </a>
